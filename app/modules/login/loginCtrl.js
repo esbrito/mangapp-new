@@ -3,7 +3,7 @@
     Date Created: 24 Dec 2015
     Description : Controller to handle Login module
     Change Log
-    s.no      date    author     description     
+    s.no      date    author     description
 
 
  ===========================================================*/
@@ -20,7 +20,7 @@ function ($rootScope, $scope, $state, $location, loginService, Flash, apiService
         vm.login = function (data) {
             if (data.Username == "admin") {
                 if (data.Password == "admin") {
-                    $state.go('app.dashboard');
+                    $state.go('app.myaccount');
                 }
                 else
                     Flash.create('danger', 'Invalid Password', 'large-text');
@@ -44,4 +44,3 @@ function ($rootScope, $scope, $state, $location, loginService, Flash, apiService
         };
 
     }]);
-

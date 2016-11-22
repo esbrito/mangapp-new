@@ -2,9 +2,9 @@
     Author      : Ranjithprabhu K
     Date Created: 24 Dec 2015
     Description : Controller to handle main application
-    
+
     Change Log
-    s.no      date    author     description     
+    s.no      date    author     description
  ===========================================================*/
 
 app.controller("appCtrl", ['$rootScope', '$scope', '$state', '$location', 'Flash','appSettings',
@@ -112,49 +112,29 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings) {
     //Main menu items of the dashboard
     vm.menuItems = [
         {
-            title: "Dashboard",
-            icon: "dashboard",
-            state: "dashboard"
+            title: "Minha Conta",
+            icon: "user",
+            state: "myaccount"
         },
         {
-            title: "Skills",
+            title: "Meus Mangás",
+            icon: "book",
+            state: "mymangas"
+        },
+        {
+            title: "Adicionar Mangá",
+            icon: "plus-circle",
+            state: "addmanga"
+        },
+        {
+            title: "Lista de Desejos",
+            icon: "heart",
+            state: "wishlist"
+        },
+        {
+            title: "Administrator",
             icon: "gears",
-            state: "skills"
-        },
-        {
-            title: "Education",
-            icon: "graduation-cap",
-            state: "education"
-        },
-        {
-            title: "Experience",
-            icon: "suitcase",
-            state: "experience"
-        },
-        {
-            title: "Recent Projects",
-            icon: "file-code-o",
-            state: "recent"
-        },
-        {
-            title: "Websites",
-            icon: "globe",
-            state: "websites"
-        },
-        {
-            title: "Portfolio",
-            icon: "anchor",
-            state: "portfolio"
-        },
-        {
-            title: "About Me",
-            icon: "user-secret",
-            state: "about"
-        },
-        {
-            title: "Contact",
-            icon: "phone",
-            state: "contact"
+            state: "admin"
         }
     ];
 

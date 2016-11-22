@@ -11,13 +11,13 @@
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
             <a class="sidebar-toggle" data-toggle="offcanvas" role="button" data-ng-click="vm.sideBar(1);">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">Habilitar Navegação</span>
             </a>
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown notifications-menu hidden-xs hidden-sm">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
+                        <a ng-hide="true" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-align-justify"></i> Layouts
                         </a>
                         <ul class="dropdown-menu">
@@ -34,7 +34,7 @@
                     </li>
                     <li class="dropdown notifications-menu">
                         <a class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-gears"></i> Themes
+                            <i class="fa fa-gears"></i> Temas
                         </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -52,24 +52,21 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../../images/ranjith.png" class="user-image" alt="User Image" />
-                            <span class="hidden-xs">Ranjithprabhu</span>
+                            <img src="{{user.profilePhoto}}" class="user-image" alt="User Image" />
+                            <span class="hidden-xs">{{user.name}}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="../../images/ranjith.png" class="img-circle" alt="User Image">
+                                <img src="{{user.profilePhoto}}" class="img-circle" alt="User Image">
 
-                                    <h3>Ranjithprabhu. K</h3>
-                                <p class="text-center">
-                                    Software Engineer
-                                     <small>Playing in Web - since 2010</small>
-                                 </p>
+                                    <h3>{{user.name}}</h3>
+
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a ui-sref="app.about" class="btn btn-success btn-flat">About Me</a>
+                                    <a ui-sref="app.myaccount" class="btn btn-success btn-flat">Minha Conta</a>
                                 </div>
                                 <div class="pull-right">
                                     <a ui-sref="login" class="btn btn-danger btn-flat">Log Out</a>
@@ -88,11 +85,11 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../../images/ranjith.png" class="img-circle" alt="User Image">
+                    <img src="{{user.profilePhoto}}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Ranjithprabhu. K</p>
-                    <span class="text-aqua text-sm">Software Engineer</span>
+                    <p>{{user.name}}</p>
+
                 </div>
             </div>
             <!-- search form -->
@@ -111,11 +108,7 @@
                         <i class="fa fa-{{menu.icon}}"></i> <span>{{menu.title}}</span>
                     </a>
                 </li>
-                <li class="treeview" ui-sref-active="active" ng-click="vm.sideBar();">
-                    <a href="https://github.com/ranjithprabhuk/Angular-Bootstrap-Dashboard" target="_blank">
-                        <i class="fa fa-github"></i> <span>View in Github</span>
-                    </a>
-                </li>
+                
             </ul>
         </section>
         <!-- /.sidebar -->
