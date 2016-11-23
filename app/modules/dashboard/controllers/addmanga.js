@@ -14,6 +14,8 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         mangaList.$loaded().then(function(){
             // add an item
             mangaList.$add(manga).then(function(ref) {
+                Flash.create('success', 'Mangá Adicionado com Sucesso!', 'large-text');
+
                 /*console.log("ref");
                 console.log(ref.path.o[1]);
                 var userRef = firebase.database().ref('users/'+$rootScope.userDB.uid+'/mangas/'+ref.path.o[1]);
