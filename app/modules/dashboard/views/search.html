@@ -10,21 +10,22 @@
 </section>
 <!-- Main content -->
 <!-- search form -->
+ 
 <div align="center">
     <h5>Selecione o filtro de busca</h5>
     <select ng-model="filter">
-      <option value="name">Nome
-      </option>
-      <option value="ednumb">Número de Edição
-      </option>
-      <option value="collection">Coleção
-      </option>
-      <option value="publisher">Editora
-      </option>
-      <option value="state">Estado
-      </option>
-      <option value="year">Ano
-      </option>
+        <option value="name">Nome
+        </option>
+        <option value="ednumb">Número de Edição
+        </option>
+        <option value="collection">Coleção
+        </option>
+        <option value="publisher">Editora
+        </option>
+        <option value="state">Estado
+        </option>
+        <option value="year">Ano
+        </option>
     </select>
 </div>
 
@@ -41,48 +42,48 @@
 
 
 <div class="box-content">
-  <div class="panel panel-default">
-    <ul style="list-style-type: none;">
-      <li ng-if="filter == 'name'" ng-repeat="(id, manga) in mangas | filter:{ name: searchItem }" > <!-- Mangas is a list  provided by the controller-->
-        <h3>
+    <div class="panel panel-default">
+        <ul style="list-style-type: none;">
+            <li ng-if="filter == 'name'" ng-repeat="(id, manga) in mangas | filter:{ name: searchItem }" > <!-- Mangas is a list  provided by the controller-->
+                <h3>
 
-          {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
-        <h3>
-      </li>
-      <li ng-if="filter == 'ednumb'" ng-repeat="(id, manga) in mangas | filter:{ ednumb: searchItem }" > <!-- Mangas is a list  provided by the controller-->
-        <h3>
+                    {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
+                </h3>
+            </li>
+            <li ng-if="filter == 'ednumb'" ng-repeat="(id, manga) in mangas | filter:{ ednumb: searchItem }" > <!-- Mangas is a list  provided by the controller-->
+                <h3>
 
-          {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
-        <h3>
-      </li>
-      <li ng-if="filter == 'collection'" ng-repeat="(id, manga) in mangas | filter:{ collection: searchItem }" > <!-- Mangas is a list  provided by the controller-->
-        <h3>
+                    {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
+                </h3>
+            </li>
+            <li ng-if="filter == 'collection'" ng-repeat="(id, manga) in mangas | filter:{ collection: searchItem }" > <!-- Mangas is a list  provided by the controller-->
+                <h3>
 
-          {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
-        <h3>
-      </li>
-      <li ng-if="filter == 'publisher'" ng-repeat="(id, manga) in mangas | filter:{ publisher: searchItem }" > <!-- Mangas is a list  provided by the controller-->
-        <h3>
+                    {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
+                </h3>
+            </li>
+            <li ng-if="filter == 'publisher'" ng-repeat="(id, manga) in mangas | filter:{ publisher: searchItem }" > <!-- Mangas is a list  provided by the controller-->
+                <h3>
 
-          {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
-        <h3>
-      </li>
-      <li ng-if="filter == 'state'" ng-repeat="(id, manga) in mangas | filter:{ state: searchItem }" > <!-- Mangas is a list  provided by the controller-->
-        <h3>
+                    {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
+                </h3>
+            </li>
+            <li ng-if="filter == 'state'" ng-repeat="(id, manga) in mangas | filter:{ state: searchItem }" > <!-- Mangas is a list  provided by the controller-->
+                <h3>
 
-          {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
-        <h3>
-      </li>
-      <li ng-if="filter == 'year'" ng-repeat="(id, manga) in mangas | filter:{ year: searchItem }" > <!-- Mangas is a list  provided by the controller-->
-        <h3>
+                    {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
+                </h3>
+            </li>
+            <li ng-if="filter == 'year'" ng-repeat="(id, manga) in mangas | filter:{ year: searchItem }" > <!-- Mangas is a list  provided by the controller-->
+                <h3>
 
-          {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
-        <h3>
-      </li>
+                    {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button>
+                </h3>
+            </li>
 
 
-    </ul>
-  </div>
+        </ul>
+    </div>
 </div>
 
 

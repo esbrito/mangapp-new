@@ -2,7 +2,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Meus Mangás
+    Meus Mangás - Teste
   </h1>
   <ol class="breadcrumb">
     <li><a><i class="fa fa-dashboard"></i> Minha Conta</a></li>
@@ -19,7 +19,8 @@
         <li ng-repeat="(id, manga) in mangas | filter:{ userUid: userDB.uid }" > <!-- Mangas is a list  provided by the controller-->
           <h3>
 
-            {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button> <button ng-click="remove(id)" type="button" class="fa fa-trash btn btn-danger btn-lg"> </button> </p>
+              <img data-ng-src="{{manga.imageFile}}" height="100px"  width="auto"/>
+ {{manga.name}} - {{manga.year}} <button type="button" class="fa fa-plus-circle btn btn-success btn-lg"></button> <button ng-click="remove(id)" type="button" class="fa fa-trash btn btn-danger btn-lg"> </button>
           <h3>
         </li>
       </ul>

@@ -2,68 +2,82 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-  <h1>
-    Adicionar Mangá
-  </h1>
-  <ol class="breadcrumb">
-    <li><a><i class="fa fa-dashboard"></i> Minha Conta</a></li>
-    <li class="active">Adicionar Mangá</li>
-  </ol>
+    <h1>
+        Adicionar Mangá
+    </h1>
+    <ol class="breadcrumb">
+        <li><a><i class="fa fa-dashboard"></i> Minha Conta</a></li>
+        <li class="active">Adicionar Mangá</li>
+    </ol>
 </section>
 <!-- Main content -->
 <section class="content">
-  <!-- Info boxes -->
+    <!-- Info boxes -->
+ 
+    <div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <form name="myForm" ng-submit="vm.addManga(vm.manga,picFile)">
+                        <h4>Nome do Mangás:
+                        </h4>
+                        <input type="text" ng-model="vm.manga.name" required>
+                        <h4>Descrição (Opcional):
+                        </h4>
+                        <input type="text" ng-model="vm.manga.desc">
+                        <h4>Upload de Foto:
+                        </h4>
+                        <input type="file" ngf-select ng-model="picFile" name="file"
+                        accept="image/*" ngf-max-size="2MB" required
+                        ngf-model-invalid="errorFile">
+                        <i ng-show="myForm.file.$error.required">*required</i><br>
+                        <i ng-show="myForm.file.$error.maxSize">File too large
+                            {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                            <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+                            <br>
 
-  <div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="panel panel-default">
-          <form ng-submit="vm.addManga(vm.manga)">
-            <h4>Nome do Mangás:
+                            <span class="progress" ng-show="picFile.progress >= 0">
+                                <div style="width:{{picFile.progress}}%"
+                                ng-bind="picFile.progress + '%'"></div>
+                            </span>
+                            <span ng-show="picFile.result">Upload Successful</span>
+                            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                            <h4>Número da edição
+                            </h4>
+                            <input type="number" value="" min="1" ng-model="vm.manga.ednumb" required>
+                        </h4>
+                        <h4>Coleção
+                        </h4>
+                        <input type="text" value="" ng-model="vm.manga.collection" required>
+                    </h4>
+                    <h4>Editora
+                    </h4>
+                    <input type="text" value="" min="1" ng-model="vm.manga.publisher" required>
+                </h4>
+                <h4>Ano de Lançamento
+                </h4>
+                <input type="text" value="" min="1" ng-model="vm.manga.year" required>
             </h4>
-            <input type="text" ng-model="vm.manga.name" required>
-            <h4>Descrição (Opcional):
+            <h4>Estado:
             </h4>
-            <input type="text" ng-model="vm.manga.desc">
-            <h4>Upload de Foto:
-            </h4>
-            <input type="file" name="imagem" required>
-            <h4>Número da edição
-            </h4>
-            <input type="number" value="" min="1" ng-model="vm.manga.ednumb" required>
-          </h4>
-          <h4>Coleção
-          </h4>
-          <input type="text" value="" ng-model="vm.manga.collection" required>
-        </h4>
-        <h4>Editora
-        </h4>
-        <input type="text" value="" min="1" ng-model="vm.manga.publisher" required>
-      </h4>
-      <h4>Ano de Lançamento
-      </h4>
-      <input type="text" value="" min="1" ng-model="vm.manga.year" required>
-    </h4>
-    <h4>Estado:
-    </h4>
-    <select ng-model="vm.manga.state">
-      <option value="great">Usado - Ótimo (Sem avarias, lido poucas vezes)
-      </option>
-      <option value="good">Usado - Bom (Lido varias vezes, pequenas marcas de uso)
-      </option>
-      <option value="used">Usado - Regular(Folhas soltas ou faltando, marcas de maus tratos)
-      </option>
-      <option value="not opened">Lacrado
-      </option>
-      <option value="new">Novo
-      </option>
-    </select>
-    <p>
-    </p>
-    <button class="btn btn-success btn-lg" type="submit">Adicionar Mangá
-    </button>
-  </div>
-</form>
+            <select ng-model="vm.manga.state">
+                <option value="great">Usado - Ótimo (Sem avarias, lido poucas vezes)
+                </option>
+                <option value="good">Usado - Bom (Lido varias vezes, pequenas marcas de uso)
+                </option>
+                <option value="used">Usado - Regular(Folhas soltas ou faltando, marcas de maus tratos)
+                </option>
+                <option value="not opened">Lacrado
+                </option>
+                <option value="new">Novo
+                </option>
+            </select>
+            <p>
+            </p>
+            <button class="btn btn-success btn-lg" type="submit" >Adicionar Mangá
+            </button>
+        </div>
+    </form>
 </div>
 </div>
 </div>

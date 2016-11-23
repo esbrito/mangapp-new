@@ -11,7 +11,7 @@
 
 var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'flash',
     //main modules
-    'login', 'dashboard','firebase' ]);
+    'login', 'dashboard','firebase','ngFileUpload' ]);
 
 
 app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider, $modalInstance) {
