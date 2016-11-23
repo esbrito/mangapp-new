@@ -56,6 +56,16 @@ dashboard.config(["$stateProvider", function ($stateProvider) {
         }
     });
 
+    $stateProvider.state('app.search', {
+     url: '/search',
+     templateUrl: 'app/modules/dashboard/views/search.html',
+     controller: 'searchController',
+     controllerAs: 'vm',
+     data: {
+         pageTitle: 'Pesquisar Mangá'
+     }
+ });
+
 
 
 }]);

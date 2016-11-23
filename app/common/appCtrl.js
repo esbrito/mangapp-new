@@ -7,19 +7,28 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings,$firebaseAuth
 
     var vm = this;
     vm.auth = $firebaseAuth();
-    vm.currentUser = vm.auth.$getAuth();
-    $rootScope.userDB = vm.currentUser;
-    console.log(vm.currentUser.uid);
-    var refUser = firebase.database().ref('users/'+vm.currentUser.uid);
-    var user = $firebaseObject(refUser);
 
-    user.$loaded().then(function(){
-        console.log(user);
-        $rootScope.user = user;
-        console.log($rootScope.user)
+
+    vm.auth.$onAuthStateChanged(function(firebaseUser) {
+        if (firebaseUser) {
+            vm.currentUser = vm.auth.$getAuth();
+            $rootScope.userDB = vm.currentUser;
+            console.log(vm.currentUser.uid);
+            var refUser = firebase.database().ref('users/'+vm.currentUser.uid);
+            var user = $firebaseObject(refUser);
+
+            user.$loaded().then(function(){
+                console.log(user);
+                $rootScope.user = user;
+                console.log($rootScope.user)
+            });
+
+            console.log(vm.currentUser);
+
+        } else {
+            console.log("Signed out");
+        }
     });
-
-    console.log(vm.currentUser);
 
     //avalilable themes
     vm.themes = [
@@ -130,6 +139,11 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings,$firebaseAuth
             title: "Adicionar Mangá",
             icon: "plus-circle",
             state: "addmanga"
+        },
+        {
+            title: "Pesquisar Mangás",
+            icon: "search",
+            state: "search"
         },
         {
             title: "Lista de Desejos",
