@@ -4,8 +4,7 @@ dashboard.controller("adminController", ['$rootScope', '$scope', '$state', '$loc
 function ($rootScope, $scope, $state, $location, dashboardService, Flash) {
     var vm = this;
 
-    vm.showDetails = true;
-    vm.home = {};
+    
 
 
 }]);

@@ -4,8 +4,5 @@ dashboard.controller("myaccountController", ['$rootScope', '$scope', '$state', '
 function ($rootScope, $scope, $state, $location, dashboardService, Flash) {
     var vm = this;
 
-    vm.showDetails = true;
-    vm.home = {};
-
 
 }]);

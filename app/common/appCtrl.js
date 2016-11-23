@@ -8,6 +8,7 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings,$firebaseAuth
     var vm = this;
     vm.auth = $firebaseAuth();
     vm.currentUser = vm.auth.$getAuth();
+    $rootScope.userDB = vm.currentUser;
     console.log(vm.currentUser.uid);
     var refUser = firebase.database().ref('users/'+vm.currentUser.uid);
     var user = $firebaseObject(refUser);

@@ -18,35 +18,35 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-default">
-          <form ng-submit="addManga(manga)">
+          <form ng-submit="vm.addManga(vm.manga)">
             <h4>Nome do Mangás:
             </h4>
-            <input type="text" ng-model="manga.name" required>
+            <input type="text" ng-model="vm.manga.name" required>
             <h4>Descrição (Opcional):
             </h4>
-            <input type="text" ng-model="manga.desc">
+            <input type="text" ng-model="vm.manga.desc">
             <h4>Upload de Foto:
             </h4>
             <input type="file" name="imagem" required>
             <h4>Número da edição
             </h4>
-            <input type="number" value="" min="1" ng-model="manga.ednumb" required>
+            <input type="number" value="" min="1" ng-model="vm.manga.ednumb" required>
           </h4>
           <h4>Coleção
           </h4>
-          <input type="text" value="" ng-model="manga.collection" required>
+          <input type="text" value="" ng-model="vm.manga.collection" required>
         </h4>
         <h4>Editora
         </h4>
-        <input type="text" value="" min="1" ng-model="manga.publisher" required>
+        <input type="text" value="" min="1" ng-model="vm.manga.publisher" required>
       </h4>
       <h4>Ano de Lançamento
       </h4>
-      <input type="text" value="" min="1" ng-model="manga.year" required>
+      <input type="text" value="" min="1" ng-model="vm.manga.year" required>
     </h4>
     <h4>Estado:
     </h4>
-    <select ng-model="manga.state">
+    <select ng-model="vm.manga.state">
       <option value="great">Usado - Ótimo (Sem avarias, lido poucas vezes)
       </option>
       <option value="good">Usado - Bom (Lido varias vezes, pequenas marcas de uso)
