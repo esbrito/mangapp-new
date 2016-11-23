@@ -33,4 +33,69 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         })
     }
 
+    $scope.accept = function(trade) {
+        var ref = firebase.database().ref('trades/'+trade.$id)
+        var tradeDB = $firebaseObject(ref);
+
+        tradeDB.$loaded().then(function(){
+            tradeDB.state = "accepted"
+
+            tradeDB.$save().then(function(ref) {
+                Flash.create('success', 'Interesse enviado ao usuário!', 'large-text');
+            }, function(error) {
+                console.log("Error:", error);
+            });
+
+        })
+    }
+
+    $scope.trackReceiver = function(trade,rastreio) {
+
+        if(rastreio.length != 13)
+        {
+            Flash.create('danger', 'Código inválido!', 'large-text');
+        }
+        else{
+            var ref = firebase.database().ref('trades/'+trade.$id)
+            var tradeDB = $firebaseObject(ref);
+            tradeDB.$loaded().then(function(){
+                tradeDB.receiverTrack = rastreio;
+
+                tradeDB.$save().then(function(ref) {
+                    Flash.create('success', 'Código Registrado!', 'large-text');
+                }, function(error) {
+                    console.log("Error:", error);
+                });
+
+            })
+        }
+
+
+    }
+
+
+    $scope.trackSender = function(trade,rastreio) {
+
+        if(rastreio.length != 13)
+        {
+            Flash.create('danger', 'Código inválido!', 'large-text');
+        }
+        else{
+            var ref = firebase.database().ref('trades/'+trade.$id)
+            var tradeDB = $firebaseObject(ref);
+            tradeDB.$loaded().then(function(){
+                tradeDB.senderTrack = rastreio;
+
+                tradeDB.$save().then(function(ref) {
+                    Flash.create('success', 'Código Registrado!', 'large-text');
+                }, function(error) {
+                    console.log("Error:", error);
+                });
+
+            })
+        }
+
+
+    }
+
 }]);
