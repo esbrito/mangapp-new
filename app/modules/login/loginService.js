@@ -1,11 +1,4 @@
-﻿/*==========================================================
-   Author      : Ranjithprabhu K
-   Date Created: 24 Dec 2015
-   Description : To handle the service for Login module
-   
-   Change Log
-   s.no      date    author     description     
-===========================================================*/
+﻿
 
 
 login.service('loginService', ['$http', '$q', 'Flash', 'apiService', function ($http, $q, Flash, apiService) {

@@ -1,13 +1,4 @@
-﻿/*==========================================================
-   Author      : Ranjithprabhu K
-   Date Created: 05 Jan 2016
-   Description : To handle the service for Dashboard module
-   
-   Change Log
-   s.no      date    author     description     
-===========================================================*/
-
-
+﻿
 dashboard.service('dashboardService', ['$http', '$q', 'Flash', 'apiService', function ($http, $q, Flash, apiService) {
 
     var dashboardService = {};

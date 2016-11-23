@@ -2,16 +2,16 @@
     Author      : Ranjithprabhu K
     Date Created: 24 Dec 2015
     Description : main application base
-    
+
     Change Log
-    s.no      date    author     description     
-    
+    s.no      date    author     description
+
 
  ===========================================================*/
 
 var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'flash',
     //main modules
-    'login', 'dashboard']);
+    'login', 'dashboard','firebase' ]);
 
 
 app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider, $modalInstance) {

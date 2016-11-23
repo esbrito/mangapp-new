@@ -1,15 +1,5 @@
-﻿/*==========================================================
-    Author      : Ranjithprabhu K
-    Date Created: 24 Dec 2015
-    Description : Base for Dashboard Application module
-
-    Change Log
-    s.no      date    author     description
-
-
- ===========================================================*/
-
-var dashboard = angular.module('dashboard', ['ui.router', 'ngAnimate','ngMaterial']);
+﻿
+var dashboard = angular.module('dashboard', ['ui.router', 'ngAnimate','ngMaterial','firebase']);
 
 
 dashboard.config(["$stateProvider", function ($stateProvider) {

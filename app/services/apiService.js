@@ -1,11 +1,4 @@
-﻿/*==========================================================
-    Author      : Ranjithprabhu K
-    Date Created: 27 Dec 2015
-    Description : This service is to communicate with server for CRUD Operaions
-    
-    Change Log
-    s.no      date    author     description     
- ===========================================================*/
+﻿
 
 app.service('apiService', ['$http', '$q', 'appSettings', function ($http, $q, appSettings) {
 

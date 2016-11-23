@@ -1,20 +1,24 @@
-﻿/*==========================================================
-    Author      : Ranjithprabhu K
-    Date Created: 24 Dec 2015
-    Description : Controller to handle main application
 
-    Change Log
-    s.no      date    author     description
- ===========================================================*/
-
-app.controller("appCtrl", ['$rootScope', '$scope', '$state', '$location', 'Flash','appSettings',
-function ($rootScope, $scope, $state, $location, Flash,appSettings) {
+app.controller("appCtrl", ['$rootScope', '$scope', '$state', '$location', 'Flash','appSettings','$firebaseAuth','$firebaseObject',
+function ($rootScope, $scope, $state, $location, Flash,appSettings,$firebaseAuth,  $firebaseObject) {
 
     $rootScope.theme = appSettings.theme;
     $rootScope.layout = appSettings.layout;
 
     var vm = this;
+    vm.auth = $firebaseAuth();
+    vm.currentUser = vm.auth.$getAuth();
+    console.log(vm.currentUser.uid);
+    var refUser = firebase.database().ref('users/'+vm.currentUser.uid);
+    var user = $firebaseObject(refUser);
 
+    user.$loaded().then(function(){
+        console.log(user);
+        $rootScope.user = user;
+        console.log($rootScope.user)
+    });
+
+    console.log(vm.currentUser);
 
     //avalilable themes
     vm.themes = [
@@ -153,16 +157,16 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings) {
     //controll sidebar open & close in mobile and normal view
     vm.sideBar = function (value) {
         if($(window).width()<=767){
-        if ($("body").hasClass('sidebar-open'))
+            if ($("body").hasClass('sidebar-open'))
             $("body").removeClass('sidebar-open');
-        else
+            else
             $("body").addClass('sidebar-open');
         }
         else {
             if(value==1){
-            if ($("body").hasClass('sidebar-collapse'))
+                if ($("body").hasClass('sidebar-collapse'))
                 $("body").removeClass('sidebar-collapse');
-            else
+                else
                 $("body").addClass('sidebar-collapse');
             }
         }
