@@ -49,6 +49,19 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         })
     }
 
+    $scope.reject = function(trade) {
+        var ref = firebase.database().ref('trades/'+trade.$id)
+        var tradeDB = $firebaseObject(ref);
+
+        tradeDB.$loaded().then(function(){
+            tradeDB.$remove();
+            Flash.create('danger', 'Troca excluída!', 'large-text');
+        })
+
+
+    }
+
+
     $scope.trackReceiver = function(trade,rastreio) {
 
         if(rastreio.length != 13)
