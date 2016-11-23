@@ -140,8 +140,24 @@
                     </div>
 
 
+                    <div ng-if="trade.senderTrack != undefined && trade.receiverTrack != undefined">
+                        <h5>Confirmar Entrega</h5>
+                        <button ng-click="confirmSender(trade)" type="button" ng-disabled="trade.senderConfirm == true"  class=" btn btn-primary btn-lg"> Recebi meu Mangá </button>
+                        <div ng-if="trade.senderConfirm && trade.receiverConfirm">
+                            <h5>Avaliar</h5>
+
+                        </div>
+
+
+                    </div>
+
                 </li>
             </ul>
+
+
+
+
+
             <ul style="list-style-type: none;">
                 <li ng-if="trade.state == 'accepted'" ng-repeat="(id, trade) in trades | filter:{  receiver : userDB.uid } " >
                     <h5> Você está interessado por: {{trade.mangaReceiverIsInterested.manga.name}}
@@ -178,6 +194,17 @@
                     </div>
                     <div ng-if="trade.receiverTrack != undefined">
                         <a  target="_blank" href="http://websro.correios.com.br/sro_bin/txect01$.QueryList?P_LINGUA=001&P_TIPO=001&P_COD_UNI={{trade.receiverTrack}}" > Verificar Envio do Mangá {{trade.mangaSenderIsInterested.manga.name}}</a>
+                    </div>
+
+                    <div ng-if="trade.senderTrack != undefined && trade.receiverTrack != undefined">
+                        <h5>Confirmar Entrega</h5>
+                        <button ng-click="confirmReceiver(trade)" ng-disabled="trade.receiverConfirm == true"  type="button" class=" btn btn-primary btn-lg"> Recebi meu Mangá </button>
+                        <div ng-if="trade.senderConfirm && trade.receiverConfirm">
+                            <h5>Avaliar</h5>
+
+                        </div>
+
+
                     </div>
 
                 </li>

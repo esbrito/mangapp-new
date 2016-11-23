@@ -98,4 +98,45 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
     }
 
+    $scope.confirmSender = function(trade) {
+
+
+            var ref = firebase.database().ref('trades/'+trade.$id)
+            var tradeDB = $firebaseObject(ref);
+            tradeDB.$loaded().then(function(){
+                tradeDB.senderConfirm = true;
+
+                tradeDB.$save().then(function(ref) {
+                    Flash.create('success', 'Confirmado o recebimento!', 'large-text');
+                }, function(error) {
+                    console.log("Error:", error);
+                });
+
+            })
+
+
+
+    }
+
+
+    $scope.confirmReceiver = function(trade) {
+
+
+            var ref = firebase.database().ref('trades/'+trade.$id)
+            var tradeDB = $firebaseObject(ref);
+            tradeDB.$loaded().then(function(){
+                tradeDB.receiverConfirm = true;
+
+                tradeDB.$save().then(function(ref) {
+                    Flash.create('success', 'Confirmado o recebimento!', 'large-text');
+                }, function(error) {
+                    console.log("Error:", error);
+                });
+
+            })
+
+
+
+    }
+
 }]);
