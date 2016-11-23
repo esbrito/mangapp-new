@@ -66,6 +66,16 @@ dashboard.config(["$stateProvider", function ($stateProvider) {
      }
  });
 
+ $stateProvider.state('app.trades', {
+  url: '/trades',
+  templateUrl: 'app/modules/dashboard/views/trades.html',
+  controller: 'tradesController',
+  controllerAs: 'vm',
+  data: {
+      pageTitle: 'Trocas'
+  }
+});
+
 
 
 }]);

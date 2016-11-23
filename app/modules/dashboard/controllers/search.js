@@ -1,4 +1,4 @@
-﻿
+
 dashboard.controller("searchController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$firebaseArray',
 function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseArray) {
     var vm = this;
@@ -13,6 +13,25 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
             $scope.mangas = mangaList;
 
         });
-}
+    }
+
+
+    $scope.trade = function(manga, id) {
+        var createTrade = ({'state': 'received', 'sender': $rootScope.userDB.uid, 'receiver': manga.userUid, 'mangaSenderIsInterested': {'id': manga.$id, 'manga': manga}, 'mangaReceiverIsInterested' : null})
+        var ref = firebase.database().ref('trades/');
+
+        var tradesList = $firebaseArray(ref);
+        tradesList.$loaded().then(function(){
+            // add an item
+            tradesList.$add(createTrade).then(function(ref) {
+                Flash.create('success', 'Interesse enviado ao usuário!', 'large-text');
+
+            });
+
+        });
+
+
+    }
+
 
 }]);

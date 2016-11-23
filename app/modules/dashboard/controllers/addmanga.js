@@ -18,22 +18,12 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
                 // add an item
                 mangaList.$add(manga).then(function(ref) {
                     Flash.create('success', 'Mangá Adicionado com Sucesso!', 'large-text');
-                    
+
 
 
                 });
             });
         });
-
-
-
-
-
-
-
-
-
-
 
 
     }

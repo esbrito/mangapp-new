@@ -146,6 +146,11 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings,$firebaseAuth
             state: "search"
         },
         {
+            title: "Trocas",
+            icon: "exchange",
+            state: "trades"
+        },
+        {
             title: "Lista de Desejos",
             icon: "heart",
             state: "wishlist"
