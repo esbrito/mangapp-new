@@ -60,7 +60,27 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
 
     }
+    $scope.getAddress = function(trade) {
+        console.log(trade);
+        var refUser = firebase.database().ref('users/'+trade.sender);
+        var user = $firebaseObject(refUser);
 
+        user.$loaded().then(function(){
+            console.log(user);
+            $scope.address1 = user.addr;
+
+        });
+
+        var refUser2 = firebase.database().ref('users/'+trade.receiver);
+        var user2 = $firebaseObject(refUser2);
+
+        user2.$loaded().then(function(){
+            console.log(user2);
+            $scope.address2 = user2.addr;
+
+        });
+
+    }
 
     $scope.trackReceiver = function(trade,rastreio) {
 
