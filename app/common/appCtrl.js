@@ -8,6 +8,21 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings,$firebaseAuth
     var vm = this;
     vm.auth = $firebaseAuth();
 
+$scope.readNotification = function(){
+
+  var ref = firebase.database().ref('users/'+$rootScope.userDB.uid)
+  var userDB = $firebaseObject(ref);
+  userDB.$loaded().then(function(){
+      userDB.haveNotification = false;
+      userDB.$save().then(function(ref) {
+
+      }, function(error) {
+          console.log("Error:", error);
+      });
+
+  })
+
+}
 
     vm.auth.$onAuthStateChanged(function(firebaseUser) {
         if (firebaseUser) {
@@ -18,6 +33,14 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings,$firebaseAuth
             console.log(vm.currentUser.uid);
             var refUser = firebase.database().ref('users/'+vm.currentUser.uid);
             var user = $firebaseObject(refUser);
+
+
+            var ref = firebase.database().ref('notifications/');
+            var notificationsList = $firebaseArray(ref);
+            notificationsList.$loaded().then(function(){
+                $scope.notifications = notificationsList;
+            });
+
 
             user.$loaded().then(function(){
                 console.log(user);

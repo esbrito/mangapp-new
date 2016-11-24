@@ -1,6 +1,6 @@
 
-dashboard.controller("searchController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$firebaseArray',
-function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseArray) {
+dashboard.controller("searchController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$firebaseArray','notification',
+function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseArray, notification) {
     var vm = this;
 
     $scope.search = function(query) {
@@ -19,7 +19,7 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
     $scope.trade = function(manga, id) {
         var createTrade = ({'state': 'received', 'sender': $rootScope.userDB.uid, 'receiver': manga.userUid, 'mangaSenderIsInterested': {'id': manga.$id, 'manga': manga}, 'mangaReceiverIsInterested' : null})
         var ref = firebase.database().ref('trades/');
-
+        notification.send("Você recebeu proposta de troca. Verificar no menu 'Trocas'", manga.userUid);
         var tradesList = $firebaseArray(ref);
         tradesList.$loaded().then(function(){
             // add an item

@@ -1,6 +1,6 @@
 
-dashboard.controller("tradesController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$firebaseArray','$firebaseObject',
-function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseArray, $firebaseObject) {
+dashboard.controller("tradesController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$firebaseArray','$firebaseObject','notification',
+function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseArray, $firebaseObject, notification) {
     var vm = this;
 
     $scope.currentDate = moment().locale('pt-br').toISOString();
@@ -25,7 +25,7 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
         tradeDB.$loaded().then(function(){
             tradeDB.mangaReceiverIsInterested = {'id': manga.$id, 'manga': manga}
-
+            notification.send("Você recebeu uma oferta de troca. Verificar no menu 'Trocas'", manga.userUid);
             tradeDB.$save().then(function(ref) {
                 Flash.create('success', 'Interesse enviado ao usuário!', 'large-text');
             }, function(error) {
@@ -40,6 +40,7 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         var tradeDB = $firebaseObject(ref);
 
         tradeDB.$loaded().then(function(){
+            notification.send("Uma de suas propostas foi aceita! Verificar no menu 'Trocas'", trade.receiver);
             tradeDB.state = "accepted"
             var date = moment().locale('pt-br').add(7, 'days');
             tradeDB.deadline = date.toISOString();
@@ -89,7 +90,8 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
     $scope.reject = function(trade) {
         var ref = firebase.database().ref('trades/'+trade.$id)
         var tradeDB = $firebaseObject(ref);
-
+        notification.send("Uma de suas trocas foi rejeitada! Verificar no menu 'Trocas'", trade.receiver);
+        notification.send("Uma de suas trocas foi rejeitada! Verificar no menu 'Trocas'", trade.sender);
         tradeDB.$loaded().then(function(){
             tradeDB.$remove();
             Flash.create('danger', 'Troca excluída!', 'large-text');
@@ -130,8 +132,8 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
             var tradeDB = $firebaseObject(ref);
             tradeDB.$loaded().then(function(){
                 tradeDB.receiverTrack = rastreio;
-
                 tradeDB.$save().then(function(ref) {
+                    notification.send("Recebido código de rastreio de uma troca! Verificar no menu 'Trocas'", trade.sender);
                     Flash.create('success', 'Código Registrado!', 'large-text');
                 }, function(error) {
                     console.log("Error:", error);
@@ -157,6 +159,7 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
                 tradeDB.senderTrack = rastreio;
 
                 tradeDB.$save().then(function(ref) {
+                  notification.send("Recebido código de rastreio de uma troca! Verificar no menu 'Trocas'", trade.receiver);
                     Flash.create('success', 'Código Registrado!', 'large-text');
                 }, function(error) {
                     console.log("Error:", error);
@@ -178,6 +181,7 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
             tradeDB.$save().then(function(ref) {
                 Flash.create('success', 'Confirmado o recebimento!', 'large-text');
+                notification.send("Um dos usuários confirmou o recebimento de seu mangá! Verificar no menu 'Trocas'", trade.receiver);
             }, function(error) {
                 console.log("Error:", error);
             });
@@ -199,6 +203,7 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
             tradeDB.$save().then(function(ref) {
                 Flash.create('success', 'Confirmado o recebimento!', 'large-text');
+                notification.send("Um dos usuários confirmou o recebimento de seu mangá! Verificar no menu 'Trocas'", trade.sender);
             }, function(error) {
                 console.log("Error:", error);
             });
@@ -245,6 +250,7 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         ratings.$loaded().then(function(){
             // add an item
             ratings.$add(rateAdd).then(function(ref) {
+                notification.send("Você recebeu uma avaliação! Verificar no menu 'Minha Conta'", user);
                 Flash.create('success', 'Avaliação enviada!', 'large-text');
 
             });
@@ -264,6 +270,8 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
                 if(trade.doneUser.length == 2){
                     tradeDB.state = "done";
                     tradeDB.$save().then(function(ref) {
+                        notification.send("Uma de suas trocas foi concluída! Verificar no menu 'Trocas'", user);
+                        notification.send("Uma de suas trocas foi concluída! Verificar no menu 'Trocas'", $rootScope.userDB.uid);
                         Flash.create('success', 'Ambos se avaliaram. Troca finalizada!', 'large-text');
                     });
                 }
