@@ -3,6 +3,8 @@ dashboard.controller("tradesController", ['$rootScope', '$scope', '$state', '$lo
 function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseArray, $firebaseObject) {
     var vm = this;
 
+    $scope.currentDate = moment().locale('pt-br').toISOString();
+
     var ref = firebase.database().ref('trades/');
     var tradesList = $firebaseArray(ref);
     tradesList.$loaded().then(function(){
@@ -39,7 +41,8 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
         tradeDB.$loaded().then(function(){
             tradeDB.state = "accepted"
-
+            var date = moment().locale('pt-br').add(7, 'days');
+            tradeDB.deadline = date.toISOString();
             tradeDB.$save().then(function(ref) {
                 Flash.create('success', 'Interesse enviado ao usuário!', 'large-text');
             }, function(error) {
@@ -47,6 +50,40 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
             });
 
         })
+    }
+
+
+    $scope.timeDiff = function(trade) {
+
+        var now = moment($scope.currentDate);
+        var end = moment(trade.deadline);
+        var diff = end.diff(now, 'days') // 1
+        // TODO Modify to '<=0' so it tests if it has reached the deadline
+        if(diff > 1){
+            return true;
+        }else {
+            return false;
+        }
+
+
+    }
+
+    $scope.report = function(trade,reportMessage) {
+
+
+        var ref = firebase.database().ref('admin/reports')
+        var reports = $firebaseArray(ref);
+        var reportAdd = {'user': $rootScope.userDB.uid , 'message': reportMessage, 'trade': trade}
+        console.log(reportAdd);
+        reports.$loaded().then(function(){
+            // add an item
+            reports.$add(reportAdd).then(function(ref) {
+                Flash.create('success', 'Reportado com Sucesso!', 'large-text');
+
+            });
+        });
+
+
     }
 
     $scope.reject = function(trade) {
@@ -225,8 +262,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
             tradeDB.$save().then(function(ref) {
                 // Test to see if both users have compleated the trade
                 if(trade.doneUser.length == 2){
-                    tradeDB.$remove();
-                    Flash.create('success', 'Ambos se avaliaram. Troca finalizada!', 'large-text');
+                    tradeDB.state = "done";
+                    tradeDB.$save().then(function(ref) {
+                        Flash.create('success', 'Ambos se avaliaram. Troca finalizada!', 'large-text');
+                    });
                 }
             }, function(error) {
                 console.log("Error:", error);

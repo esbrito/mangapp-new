@@ -1,5 +1,7 @@
 
 <!-- Content Header (Page header) -->
+
+<script src="../../../../../node_modules/moment/min/moment-with-locales.min.js"></script>
 <section class="content-header">
     <h1>
         Trocas
@@ -18,7 +20,7 @@
         <div class="panel panel-default">
             <h2>Ofertados</h2>
             <ul style="list-style-type: none;">
-                <li ng-if="trade.state != 'accepted'" ng-repeat="(id, trade) in trades | filter:{  sender : userDB.uid }" >
+                <li ng-if="trade.state != 'accepted' && trade.state != 'done'" ng-repeat="(id, trade) in trades | filter:{  sender : userDB.uid }" >
                     <h5> Você está interessado por:  {{trade.mangaSenderIsInterested.manga.name}}
                         <br>
                         Usuário que recebeu a oferta está interessado em:
@@ -45,7 +47,7 @@
         <div class="panel panel-default">
             <h2>Recebidos</h2>
             <ul style="list-style-type: none;">
-                <li ng-if="trade.state != 'accepted'" ng-repeat="(id, trade) in trades | filter:{  receiver: userDB.uid }" >
+                <li ng-if="trade.state != 'accepted' && trade.state != 'done'" ng-repeat="(id, trade) in trades | filter:{  receiver: userDB.uid }" >
                     <h5> Usuário tens interesse por:  {{trade.mangaSenderIsInterested.manga.name}}
                         <br>
                         Você está interessado por:
@@ -78,7 +80,7 @@
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
                                     </div>
                                 </div>
 
@@ -135,7 +137,38 @@
 
                                 </div>
                                 <br>
+                                Data máxima para envio: {{trade.deadline}}
+                                <br>
                                 <button ng-disabled="trade.senderTrack != undefined" type="button"   data-toggle="modal" data-target="#popUpTrack1" class="btn btn-success btn-lg">Enviar Código de Rastreio</button>
+                                <br>
+
+                                <div name="report">
+                                    <div id="popUpReport" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Reportar</h4>
+
+                                                </div>
+                                                <div class="modal-body">
+                                                    O administrador receberá o porque a torca foi mal sucedida e julgará se cabe punição aos envolvidos, principalmente em caso de má fé.
+                                                    <textarea rows="5" cols="80" placeholder="Escreva o porque não foi concluída a troca..." ng-model="reportMessage">
+                                                    </textarea>
+
+                                                    <button ng-click="report(trade,reportMessage)"  data-dismiss="modal"  type="button" class=" btn btn-primary btn-lg"> Reportar </button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <button ng-if="timeDiff(trade) == true" type="button"   data-toggle="modal" data-target="#popUpReport" class="btn btn-danger btn-lg" >Reportar troca mal sucedida</button>
+
+                                </div>
+                                <br>
                             </h5>
                             <div id="popUpTrack1" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
@@ -150,7 +183,7 @@
                                             <button ng-click="trackSender(trade, rastreio)" data-dismiss="modal" type="button" class=" btn btn-primary btn-lg"> Enviar </button>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
                                         </div>
                                     </div>
 
@@ -178,7 +211,7 @@
                                                 <button ng-click="comment(trade, message)" type="button" class=" btn btn-primary btn-lg"> Enviar </button>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
                                             </div>
                                         </div>
 
@@ -202,7 +235,9 @@
 
                             <div ng-if="trade.senderTrack != undefined && trade.receiverTrack != undefined">
                                 <h5>Confirmar Entrega</h5>
-                                <button ng-click="confirmSender(trade)" type="button" ng-disabled="trade.senderConfirm == true"  class=" btn btn-primary btn-lg"> Recebi meu Mangá </button>
+                                <button ng-click="confirmSender(trade)" type="button" ng-if="trade.senderConfirm != true"  class=" btn btn-primary btn-lg"> Recebi meu Mangá </button>
+                                <button disabled type="button" ng-if="trade.senderConfirm == true"  class=" btn btn-primary btn-lg"> Confirmado o Recebimento </button>
+
 
                                 <div name="review">
                                     <div ng-if="trade.senderConfirm && trade.receiverConfirm">
@@ -222,7 +257,7 @@
                                                         <button ng-click="review(trade,trade.receiver,rate)"  data-dismiss="modal"  type="button" class=" btn btn-primary btn-lg"> Enviar </button>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
                                                     </div>
                                                 </div>
 
@@ -279,7 +314,36 @@
 
                                 </div>
                                 <br>
+                                Data máxima para envio: {{trade.deadline}}
+                                <br>
                                 <button ng-disabled="trade.receiverTrack != undefined" data-toggle="modal" data-target="#popUpTrack2" type="button" class="btn btn-success btn-lg">Enviar Código de Rastreio</button>
+                                <br>
+                                <div name="report">
+                                    <div id="popUpReport" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Reportar</h4>
+
+                                                </div>
+                                                <div class="modal-body">
+                                                    O administrador receberá o porque a torca foi mal sucedida e julgará se cabe punição aos envolvidos, principalmente em caso de má fé.
+                                                    <textarea rows="5" cols="80" placeholder="Escreva o porque não foi concluída a troca..." ng-model="reportMessage">
+                                                    </textarea>
+
+                                                    <button ng-click="report(trade,reportMessage)"  data-dismiss="modal"  type="button" class=" btn btn-primary btn-lg"> Reportar </button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <button ng-if="timeDiff(trade) == true" type="button"   data-toggle="modal" data-target="#popUpReport" class="btn btn-danger btn-lg" >Reportar troca mal sucedida</button>
+
+                                </div>
                             </h5>
                             <div id="popUpTrack2" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
@@ -293,7 +357,7 @@
                                             <button ng-click="trackReceiver(trade, rastreio)" data-dismiss="modal" type="button" class=" btn btn-primary btn-lg"> Enviar </button>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
                                         </div>
                                     </div>
 
@@ -322,7 +386,7 @@
                                                 <button ng-click="comment(trade, message)" type="button" class=" btn btn-primary btn-lg"> Enviar </button>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
                                             </div>
                                         </div>
 
@@ -343,7 +407,8 @@
 
                             <div ng-if="trade.senderTrack != undefined && trade.receiverTrack != undefined">
                                 <h5>Confirmar Entrega</h5>
-                                <button ng-click="confirmReceiver(trade)" ng-disabled="trade.receiverConfirm == true"  type="button" class=" btn btn-primary btn-lg"> Recebi meu Mangá </button>
+                                <button ng-click="confirmReceiver(trade)" ng-if="trade.receiverConfirm != true"  type="button" class=" btn btn-primary btn-lg"> Recebi meu Mangá </button>
+                                <button disabled type="button" ng-if="trade.receiverConfirm == true"  class=" btn btn-primary btn-lg"> Confirmado o Recebimento </button>
                                 <div name="review">
                                     <div ng-if="trade.senderConfirm && trade.receiverConfirm">
 
@@ -362,7 +427,7 @@
                                                         <button ng-click="review(trade,trade.sender,rate)"  data-dismiss="modal"  type="button" class=" btn btn-primary btn-lg"> Enviar </button>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
                                                     </div>
                                                 </div>
 
@@ -391,6 +456,29 @@
         </div>
     </div>
 
+    <!-- History -->
+    <!-- Offered trades -->
+    <div class="box-content">
+        <div class="panel panel-default">
+            <h2>Histórico de Trocas Finalizadas</h2>
+            <ul style="list-style-type: none;">
+                <li ng-if="trade.state == 'done'" ng-repeat="(id, trade) in trades | filter:{  sender : userDB.uid }" >
+                    <h5> Você recebeu:  {{trade.mangaSenderIsInterested.manga.name}}
+                        <br>
+                        O outro usuário recebeu:
+                        {{trade.mangaReceiverIsInterested.manga.name}}
+                    </h5>
+                </li>
+                <li ng-if="trade.state == 'done'" ng-repeat="(id, trade) in trades | filter:{  receiver : userDB.uid }" >
+                    <h5> Você recebeu:  {{trade.mangaReceiverIsInterested.manga.name}}
+                        <br>
+                        O outro usuário recebeu:
+                        {{trade.mangaSenderIsInterested.manga.name}}
+                    </h5>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 
 
