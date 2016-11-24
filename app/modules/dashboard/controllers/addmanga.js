@@ -17,7 +17,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
             mangaList.$loaded().then(function(){
                 // add an item
                 mangaList.$add(manga).then(function(ref) {
-                    Flash.create('success', 'Mangá Adicionado com Sucesso!', 'large-text');
+                  swal({
+                    title: "Manga Adicionado com sucesso!",
+                    timer: 2000,
+                    showConfirmButton: false });
 
 
 

@@ -18,8 +18,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         var bannedCPFs = $firebaseArray(ref);
         bannedCPFs.$loaded().then(function(){
             bannedCPFs.$add(cpf).then(function(ref) {
-                Flash.create('success', 'CPF Banido com Sucesso!', 'large-text');
-
+              swal({
+                title: "CPF banido com sucesso!",
+                timer: 2000,
+                showConfirmButton: false });
             });
         });
 
@@ -35,18 +37,20 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
                 if(cpf == cpfBan.$value){
                     bannedCPFs.$remove(cpfBan).then(function(ref) {
-                        Flash.create('success', 'CPF Desbanido com Sucesso!', 'large-text');
-
+                      swal({
+                        title: "CPF banido com sucesso!",
+                        timer: 2000,
+                        showConfirmButton: false });
                     });
+                    };
 
 
-                }
+                });
 
         });
 
 
-    })
-}
+    }
 
 
 }]);

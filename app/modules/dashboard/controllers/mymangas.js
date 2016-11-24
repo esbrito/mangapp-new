@@ -1,7 +1,7 @@
 
 
-dashboard.controller("mymangasController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$firebaseObject','$firebaseArray',
-function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseObject, $firebaseArray) {
+dashboard.controller("mymangasController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService','$firebaseObject','$firebaseArray',
+function ($rootScope, $scope, $state, $location, dashboardService, $firebaseObject, $firebaseArray) {
     var vm = this;
 
 
@@ -20,7 +20,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         var mangaList = $firebaseArray(ref);
         mangaList.$loaded().then(function(){
             mangaList.$remove(id).then(function(){
-            Flash.create('danger', 'Mangá Removido!', 'large-text');
+            swal({
+              title: "Manga deletado com sucesso!",
+              timer: 2000,
+              showConfirmButton: false });
         })
     })
 }
