@@ -1,17 +1,52 @@
 
 
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-          Administrator
-        </h1>
-        <ol class="breadcrumb">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Administrator
+    </h1>
+    <ol class="breadcrumb">
 
-            <li class="active">Administrator</li>
-        </ol>
-    </section>
-    <!-- Main content -->
-    <section class="content">
-        <!-- Info boxes -->
-        admin
-    </section><!-- /.content -->
+        <li class="active">Administrator</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <h5>Trocas Reportadas</h5>
+    <div class="box-content">
+        <div class="panel panel-default">
+            <ul style="list-style-type: none;">
+                <li ng-repeat="(id, report) in reports" >
+                    <div class="box-content">
+                        <div class="panel panel-default">
+                            *Id do usuário que reportou: {{report.user}} <br>
+                            *Mensagem Reportada: {{report.message}} <br>
+                            *Dados da troca: <br>
+                            *Deadline: {{report.trade.deadline}} <br>
+                            *ID do Mangá do Sender: {{report.trade.mangaReceiverIsInterested.id}} <br>
+                            *ID do Mangá do Receiver: {{report.trade.mangaSenderIsInterested.id}} <br>
+                            *Id do Sender: {{report.trade.sender}} <br>
+                            *Id do Receiver: {{report.trade.receiver}} <br>
+                            *Estado: {{report.trade.state}} <br>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+
+    <h5>Banir Usuário</h5>
+    Digite o CPF para Banir: <input type="text" placeholder="CPF do Usuário"ng-model="cpfToBan">
+    <button class="btn btn-danger btn-lg" ng-click="ban(cpfToBan)" >Banir
+    </button>
+    <h5>Desbanir Usuário</h5>
+    Digite o CPF para Desbanir: <input type="text" placeholder="CPF do Usuário"ng-model="cpfToUnban">
+    <button class="btn btn-success btn-lg" ng-click="unban(cpfToUnban)" >Desbanir
+    </button>
+
+
+
+</section><!-- /.content -->

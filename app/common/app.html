@@ -95,10 +95,14 @@
                 </div>
             </div>
 
-            <!-- /.search form -->
+
             <ul class="sidebar-menu">
                 <li class="treeview" ui-sref-active="active" ng-click="vm.sideBar();" data-ng-repeat="menu in vm.menuItems">
-                    <a ui-sref="app.{{menu.state}}">
+
+                    <a ng-if="menu.state != 'admin'" ui-sref="app.{{menu.state}}">
+                        <i class="fa fa-{{menu.icon}}"></i> <span>{{menu.title}}</span>
+                    </a>
+                    <a ng-if="menu.state == 'admin' && user.isAdmin" ui-sref="app.{{menu.state}}">
                         <i class="fa fa-{{menu.icon}}"></i> <span>{{menu.title}}</span>
                     </a>
                 </li>

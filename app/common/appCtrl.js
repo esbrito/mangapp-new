@@ -1,6 +1,6 @@
 
-app.controller("appCtrl", ['$rootScope', '$scope', '$state', '$location', 'Flash','appSettings','$firebaseAuth','$firebaseObject',
-function ($rootScope, $scope, $state, $location, Flash,appSettings,$firebaseAuth,  $firebaseObject) {
+app.controller("appCtrl", ['$rootScope', '$scope', '$state', '$location', 'Flash','appSettings','$firebaseAuth','$firebaseObject','$firebaseArray',
+function ($rootScope, $scope, $state, $location, Flash,appSettings,$firebaseAuth,  $firebaseObject, $firebaseArray) {
 
     $rootScope.theme = appSettings.theme;
     $rootScope.layout = appSettings.layout;
@@ -11,6 +11,8 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings,$firebaseAuth
 
     vm.auth.$onAuthStateChanged(function(firebaseUser) {
         if (firebaseUser) {
+
+
             vm.currentUser = vm.auth.$getAuth();
             $rootScope.userDB = vm.currentUser;
             console.log(vm.currentUser.uid);
@@ -21,12 +23,28 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings,$firebaseAuth
                 console.log(user);
                 $rootScope.user = user;
                 console.log($rootScope.user)
-            });
+                //Check if it is banned CPF
+                var refBan = firebase.database().ref('admin/banned');
+                var bannedList = $firebaseArray(refBan);
+                var alreadyExist = false;
+                bannedList.$loaded().then(function(){
+                    angular.forEach(bannedList, function(cpf) {
+                        console.log(cpf);
+                        if(user.CPF == cpf.$value){
+                            Flash.create('danger', 'CPF - Banido!', 'large-text');
+                            vm.auth.$signOut();
 
+
+                        }
+                    })
+
+                });
+            });
             console.log(vm.currentUser);
 
         } else {
             console.log("Signed out");
+            $state.go('login');
         }
     });
 

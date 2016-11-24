@@ -36,7 +36,7 @@ function ($rootScope, $scope, $state, $location, loginService, Flash, apiService
                     if(user.CPF == vm.setUser.CPF){
                         Flash.create('danger', 'CPF - Já registrado!', 'large-text');
                         alreadyExist = true;
-
+                        
                     }
                 })
                 if(!alreadyExist)
