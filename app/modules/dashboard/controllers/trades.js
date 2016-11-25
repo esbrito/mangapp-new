@@ -28,6 +28,17 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         $scope.modaltrade = trade;
 
     }
+    $scope.modalUserDetail = function(manga) {
+
+        var ref = firebase.database().ref('users/'+manga.userUid);
+        var userDetail = $firebaseObject(ref);
+        userDetail.$loaded().then(function(){
+            $scope.modaluser = userDetail;
+
+        });
+    }
+
+
 
     $scope.offer = function(trade,manga,mangaID) {
         var ref = firebase.database().ref('trades/'+trade.$id)

@@ -76,6 +76,8 @@
 </div>
 
 
+
+
 <div id="popUpUser" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -86,23 +88,13 @@
             </div>
             <div class="modal-body">
                 <h3 align="center">
-                    Nome: {{modalmanga.name}} <br>
-                    Foto:<br>
-                    <img src="{{modalmanga.imageFile}}" height="300px" width="auto" /><br>
-                    Descrição: {{modalmanga.desc}}<br>
-                    Coleção: {{modalmanga.collection}}<br>
-                    Número de Edição: {{modalmanga.ednumb}}<br>
-                    Editora: {{modalmanga.publisher}}<br>
-                    Estado:
-                    <div ng-switch on="modalmanga.state">
-                        <p ng-switch-when="great">Usado - Ótimo (Sem avarias, lido poucas vezes)</p>
-                        <p ng-switch-when="good">Usado - Bom (Lido varias vezes, pequenas marcas de uso)</p>
-                        <p ng-switch-when="used">Usado - Regular(Folhas soltas ou faltando, marcas de maus tratos)</p>
-                        <p ng-switch-when="new">Novo</p>
-                        <p ng-switch-when="not opened">Lacrado</p>
-                        <p ng-switch-default>Nenhuma condição fornecida</p>
-                    </div>
-                    Ano: {{modalmanga.year}}<br>
+                    Nome: {{modaluser.Username}} <br>
+                    Avaliações: <br>
+                    <li  ng-repeat=" rating in modaluser.ratings" >
+                        <h3>
+                            <b>{{rating.user}}</b> {{rating.message}} <br>
+                        </h3>
+                    </li>
                 </h3>
             </div>
             <div class="modal-footer">
@@ -119,37 +111,37 @@
             <li ng-if="filter == 'name'" ng-repeat="(id, manga) in mangas | filter:{ name: searchItem ,  userUid: '!' + userDB.uid}:false" > <!-- Mangas is a list  provided by the controller-->
                 <h3>
                     <img data-ng-src="{{manga.imageFile}}" height="100px"  width="auto"/>
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)"  class="fa fa-info-circle btn btn-success btn-lg"><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUser(manga)"  class="fa fa-user btn btn-warning btn-lg"></button><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
+                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)"  class="fa fa-info-circle btn btn-success btn-lg"><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user btn btn-warning btn-lg"></button><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
                 </h3>
             </li>
             <li ng-if="filter == 'ednumb'" ng-repeat="(id, manga) in mangas | filter:{ ednumb: searchItem ,  userUid: '!' + userDB.uid}:false" > <!-- Mangas is a list  provided by the controller-->
                 <h3>
                     <img data-ng-src="{{manga.imageFile}}" height="100px"  width="auto"/>
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp"  type="button" ng-click="modal(manga)"  class="fa fa-info-circle btn btn-success btn-lg"></button><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
+                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp"  type="button" ng-click="modal(manga)"  class="fa fa-info-circle btn btn-success btn-lg"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user btn btn-warning btn-lg"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
                 </h3>
             </li>
             <li ng-if="filter == 'collection'" ng-repeat="(id, manga) in mangas | filter:{ collection: searchItem ,  userUid: '!' + userDB.uid}:false" > <!-- Mangas is a list  provided by the controller-->
                 <h3>
                     <img data-ng-src="{{manga.imageFile}}" height="100px"  width="auto"/>
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle btn btn-success btn-lg"></button><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
+                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle btn btn-success btn-lg"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user btn btn-warning btn-lg"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
                 </h3>
             </li>
             <li ng-if="filter == 'publisher'" ng-repeat="(id, manga) in mangas | filter:{ publisher: searchItem ,  userUid: '!' + userDB.uid}:false" > <!-- Mangas is a list  provided by the controller-->
                 <h3>
                     <img data-ng-src="{{manga.imageFile}}" height="100px"  width="auto"/>
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle btn btn-success btn-lg"></button><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
+                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle btn btn-success btn-lg"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user btn btn-warning btn-lg"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
                 </h3>
             </li>
             <li ng-if="filter == 'state'" ng-repeat="(id, manga) in mangas | filter:{ state: searchItem ,  userUid: '!' + userDB.uid}:false" > <!-- Mangas is a list  provided by the controller-->
                 <h3>
                     <img data-ng-src="{{manga.imageFile}}" height="100px"  width="auto"/>
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle btn btn-success btn-lg"></button><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
+                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle btn btn-success btn-lg"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user btn btn-warning btn-lg"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
                 </h3>
             </li>
             <li ng-if="filter == 'year'" ng-repeat="(id, manga) in mangas | filter:{ year: searchItem ,  userUid: '!' + userDB.uid}:false" > <!-- Mangas is a list  provided by the controller-->
                 <h3>
                     <img data-ng-src="{{manga.imageFile}}" height="100px"  width="auto"/>
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle btn btn-success btn-lg"></button><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
+                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle btn btn-success btn-lg"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user btn btn-warning btn-lg"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange btn btn-primary btn-lg"></button>
                 </h3>
             </li>
 

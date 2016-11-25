@@ -1,6 +1,6 @@
 
-dashboard.controller("searchController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$firebaseArray','notification',
-function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseArray, notification) {
+dashboard.controller("searchController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$firebaseArray','notification','$firebaseObject',
+function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseArray, notification, $firebaseObject) {
     var vm = this;
 
     $scope.search = function(query) {
@@ -18,6 +18,17 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         $scope.modalmanga = manga;
         console.log($scope.modalmanga);
     }
+    $scope.modalUserDetail = function(manga) {
+
+        var ref = firebase.database().ref('users/'+manga.userUid);
+        var userDetail = $firebaseObject(ref);
+        userDetail.$loaded().then(function(){
+            $scope.modaluser = userDetail;
+
+        });
+    }
+
+
     $scope.trade = function(manga, id) {
         var createTrade = ({'state': 'received', 'sender': $rootScope.userDB.uid, 'receiver': manga.userUid, 'mangaSenderIsInterested': {'id': manga.$id, 'manga': manga}, 'mangaReceiverIsInterested' : null})
         var ref = firebase.database().ref('trades/');
@@ -26,17 +37,17 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         tradesList.$loaded().then(function(){
             // add an item
             tradesList.$add(createTrade).then(function(ref) {
-              swal({
-                title: "Interesse enviado ao usuário!",
-                timer: 1700,
-                showConfirmButton: false });
+                swal({
+                    title: "Interesse enviado ao usuário!",
+                    timer: 1700,
+                    showConfirmButton: false });
+
+                });
 
             });
 
-        });
+
+        }
 
 
-    }
-
-
-}]);
+    }]);
