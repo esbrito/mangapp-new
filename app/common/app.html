@@ -1,3 +1,4 @@
+<div ng-app="" ng-init="miniActive='0'">
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
@@ -10,7 +11,7 @@
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
-      <a class="sidebar-toggle" data-toggle="offcanvas" role="button" data-ng-click="vm.sideBar(1);">
+      <a class="sidebar-toggle" data-toggle="offcanvas" role="button" miniActive='1' data-ng-click="vm.sideBar(1);">
         <span class="sr-only">Habilitar Navegação</span>
       </a>
       <!-- Navbar Right Menu -->
@@ -37,7 +38,7 @@
               <div ng-if="user.haveNotification">
                 <i class="fa fa-bell"></i>
                 <span style="color: red">
-                  Notificações (NOVA)
+                  Notificações (Não lida)
                 </span>
               </div>
               <div ng-if="!user.haveNotification">
@@ -120,7 +121,10 @@
           <!--<img src="{{user.profilePhoto}}" class="img-circle" alt="User Image"> -->
         </div>
         <div class="" align="center">
-          <p>Bem-Vindo, {{user.Username}} !</p>
+            <a ng-if="ui-sref-active!='active'">
+                <p>&emsp;&emsp;&emsp;Bem-Vindo, {{user.Username}} !&emsp;&emsp;&emsp;</p>
+            </a>
+
 
         </div>
       </div>

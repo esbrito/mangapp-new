@@ -76,73 +76,73 @@ $scope.readNotification = function(){
         {
             theme: "black",
             color: "skin-black",
-            title: "Dark - Black Skin",
+            title: "Cinza escuro",
             icon:""
         },
         {
             theme: "black",
             color: "skin-black-light",
-            title: "Light - Black Skin",
+            title: "Branco",
             icon:"-o"
         },
         {
             theme: "blue",
             color: "skin-blue",
-            title: "Dark - Blue Skin",
+            title: "Azul com cinza",
             icon:""
         },
         {
             theme: "blue",
             color: "skin-blue-light",
-            title: "Light - Blue Skin",
+            title: "Branco com azul",
             icon:"-o"
         },
         {
             theme: "green",
             color: "skin-green",
-            title: "Dark - Green Skin",
+            title: "Cinza com verde",
             icon:""
         },
         {
             theme: "green",
             color: "skin-green-light",
-            title: "Light - Green Skin",
+            title: "Branco com verde",
             icon:"-o"
         },
         {
             theme: "yellow",
             color: "skin-yellow",
-            title: "Dark - Yellow Skin",
+            title: "Amarelo com cinza",
             icon:""
         },
         {
             theme: "yellow",
             color: "skin-yellow-light",
-            title: "Light - Yellow Skin",
+            title: "Branco com amarelo",
             icon:"-o"
         },
         {
             theme: "red",
             color: "skin-red",
-            title: "Dark - Red Skin",
+            title: "Vermelho com cinza",
             icon: ""
         },
         {
             theme: "red",
             color: "skin-red-light",
-            title: "Light - Red Skin",
+            title: "Branco com vermelho",
             icon: "-o"
         },
         {
             theme: "purple",
             color: "skin-purple",
-            title: "Dark - Purple Skin",
+            title: "Cinza com roxo",
             icon: ""
         },
         {
             theme: "purple",
             color: "skin-purple-light",
-            title: "Light - Purple Skin",
+            title: "Roxo com branco",
             icon: "-o"
         },
     ];
