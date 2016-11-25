@@ -14,8 +14,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
         });
     }
-
-
+    $scope.modal = function(manga) {
+        $scope.modalmanga = manga;
+        console.log($scope.modalmanga);
+    }
     $scope.trade = function(manga, id) {
         var createTrade = ({'state': 'received', 'sender': $rootScope.userDB.uid, 'receiver': manga.userUid, 'mangaSenderIsInterested': {'id': manga.$id, 'manga': manga}, 'mangaReceiverIsInterested' : null})
         var ref = firebase.database().ref('trades/');

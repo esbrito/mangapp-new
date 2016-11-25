@@ -19,6 +19,11 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         $scope.mangas = mangaList;
     });
 
+    $scope.modal = function(manga) {
+        $scope.modalmanga = manga;
+        console.log($scope.modalmanga);
+    }
+
     $scope.offer = function(trade,manga,mangaID) {
         var ref = firebase.database().ref('trades/'+trade.$id)
         var tradeDB = $firebaseObject(ref);
@@ -34,6 +39,7 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
         })
     }
+
 
     $scope.accept = function(trade) {
         var ref = firebase.database().ref('trades/'+trade.$id)
