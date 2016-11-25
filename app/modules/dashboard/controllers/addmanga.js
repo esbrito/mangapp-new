@@ -1,7 +1,7 @@
 
 
-dashboard.controller("addmangaController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$firebaseObject','$firebaseArray','Upload','$timeout',
-function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseObject, $firebaseArray, Upload, $timeout) {
+dashboard.controller("addmangaController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash','$firebaseObject','$firebaseArray','Upload','$timeout','notification',
+function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseObject, $firebaseArray, Upload, $timeout, notification) {
     var vm = this;
 
 
@@ -18,7 +18,20 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
                 // add an item
                 mangaList.$add(manga).then(function(ref) {
                     Flash.create('success', 'Mangá Adicionado com Sucesso!', 'large-text');
+                    //Now it needs to send notifications to all users in wishlist
+                    var ref = firebase.database().ref('wishlist/');
+                    var wishListLoad = $firebaseArray(ref);
+                    wishListLoad.$loaded().then(function(){
+                        var arrayOfKeywords = manga.name.split(" ");
+                        angular.forEach(wishListLoad, function(wish) {
+                            angular.forEach(arrayOfKeywords, function(keyword) {
+                                if(keyword.toUpperCase() == wish.word.toUpperCase()){
+                                    notification.send("Lista de Desejos: um Mangá que possui a palavra chave '"+ keyword+"' foi adicionado! Use a pesquisa para encontrá-lo", wish.user)
+                                }
+                            });
+                        });
 
+                    });
 
 
                 });
