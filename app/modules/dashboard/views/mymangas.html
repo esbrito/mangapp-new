@@ -4,10 +4,7 @@
     <h1>
         Meus Mangás
     </h1>
-    <ol class="breadcrumb">
-        <li><a><i class="fa fa-dashboard"></i> Minha Conta</a></li>
-        <li class="active">Meus Mangás</li>
-    </ol>
+
 </section>
 <!-- Main content -->
 <section class="content">
@@ -20,7 +17,7 @@
                     <h3>
 
                         <img data-ng-src="{{manga.imageFile}}" height="100px"  width="auto"/>
-                        {{manga.name}} - {{manga.year}} <button type="button" data-toggle="modal" ng-click="modal(manga)"  data-target="#popUp" class="fa fa-plus-circle btn btn-success btn-lg"></button> <button ng-click="remove(manga)" type="button" class="fa fa-trash btn btn-danger btn-lg"> </button>
+                        {{manga.name}} - {{manga.year}} <button type="button" data-toggle="modal" ng-click="modal(manga)"  data-target="#popUp" class="fa fa-info-circle btn btn-success btn-lg"></button> <button ng-click="remove(manga)" type="button" class="fa fa-trash btn btn-danger btn-lg"> </button>
                     </h3>
 
                     <div id="popUp" class="modal fade" role="dialog">
