@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Mangapp</title>
+    <link rel="shortcut icon" href="img/mangapp-favicon.png" type="img/x-icon"> <!-- favicon -->
     <meta name="description" content="Angular Bootstrap Dashboard"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -9,6 +10,7 @@
     <link href="plugins/angular-material/angular-material.min.css" rel="stylesheet" />
     <!--CSS-->
     <link href="css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
     <link href="css/site.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/nga.all.min.css" rel="stylesheet" />
@@ -20,7 +22,41 @@
     <link href="plugins/owl-carousel/owl.theme.css" rel="stylesheet" />
     <link href="plugins/owl-carousel/owl.transitions.css" rel="stylesheet" />
     <link href="plugins/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="/css/loginUtils.css" rel="stylesheet" />
 </head>
+
+<!--Header -->
+<div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+              Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">
+              <i> <img src="/img/mangapp-favicon.png"  height="30" width="30"> </i> <span class="headerLogin">Mangapp</span>
+            </a>
+          </div>
+
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                  <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                  <li class="hidden">
+                    <a href="#page-top"></a>
+                  </li>
+                  <li>
+                    <a class="headerLogin" href="#about">Sobre</a>
+                  </li>
+                  <li>
+                    <a class="headerLogin" href="#contact">Contato</a>
+                  </li>
+                </ul>
+          </div>
+      </div>
+
+          <!-- /.navbar-collapse -->
+<!-- End header -->
+
 <body ng-app="app" class="hold-transition sidebar-mini {{theme}} {{layout}}">
     <!--Scripts-->
     <script src="js/jquery.min.js"></script>

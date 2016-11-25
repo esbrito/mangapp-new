@@ -1,4 +1,13 @@
 
+<style>
+    /*Background*/
+    body {
+        background-image: url("img/downloads-bg.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+</style>
 <div class="container margin-top-80">
     <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2" data-ng-show="vm.signIn">
         <div class="panel panel-info">
@@ -16,19 +25,22 @@
                         <input id="login-password" type="password" class="form-control" name="password" placeholder="Senha" data-ng-model="vm.getUser.Password" required>
                     </div>
                     <div class="col-xs-12 margin-top-20">
-
-                        <span class="pull-right">
-                            <a href="#">Esqueceu a senha?</a>
-                        </span>
+                        <!--
+                            <span class="pull-right">
+                                 <a href="#">Esqueceu a senha?</a>
+                            </span>
+                        -->
                     </div>
-                    <div class="col-xs-12 margin-top-20">
-                        <button type="submit" class="btn btn-block btn-success">
+
+
+
+                        <button onclick="window.location.href='dashboard.html' type="submit" class="btn btn-block btn-primary">
                             Logar <span class="glyphicon glyphicon-play"></span>
                         </button>
+
                         <button type="button" class="btn btn-block btn-primary" data-ng-click="vm.signIn=false;">
                             Cadastrar <span class="glyphicon glyphicon-hand-up"></span>
                         </button>
-                    </div>
                 </form>
             </div>
         </div>
@@ -82,12 +94,12 @@
 
                     <div class="col-xs-12 margin-top-20">
                         <div class="col-xs-6 padding-left-none">
-                            <button type="submit" class="btn btn-block btn-success">
+                            <button type="submit" class="btn btn-block btn-primary">
                                 Registrar <span class="glyphicon glyphicon-play"></span>
                             </button>
                         </div>
                         <div class="col-xs-6 padding-right-none">
-                            <button type="button" class="btn btn-block btn-warning" data-ng-click="vm.signIn=true;">
+                            <button type="button" class="btn btn-block btn-primary" data-ng-click="vm.signIn=true;">
                                 Cancelar <span class="glyphicon glyphicon-move"></span>
                             </button>
                         </div>
