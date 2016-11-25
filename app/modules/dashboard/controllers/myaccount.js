@@ -21,6 +21,5 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
       record.addr = $scope.addr;
 
       $scope.user.$save(record);
-
     }
 }]);

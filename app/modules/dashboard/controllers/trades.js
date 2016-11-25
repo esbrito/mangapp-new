@@ -37,7 +37,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
             tradeDB.mangaReceiverIsInterested = {'id': manga.$id, 'manga': manga}
             notification.send("Você recebeu uma oferta de troca. Verificar no menu 'Trocas'", manga.userUid);
             tradeDB.$save().then(function(ref) {
-                Flash.create('success', 'Interesse enviado ao usuário!', 'large-text');
+              swal({
+                title: "Interesse enviado ao usuário!",
+                timer: 1700,
+                showConfirmButton: false });
             }, function(error) {
                 console.log("Error:", error);
             });
@@ -56,7 +59,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
             var date = moment().locale('pt-br').add(7, 'days');
             tradeDB.deadline = date.toISOString();
             tradeDB.$save().then(function(ref) {
-                Flash.create('success', 'Interesse enviado ao usuário!', 'large-text');
+              swal({
+                title: "Interesse enviado ao usuário!",
+                timer: 1700,
+                showConfirmButton: false });
             }, function(error) {
                 console.log("Error:", error);
             });
@@ -109,7 +115,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
                             tradeDB.$save().then(function(ref) {
                                 notification.send("Uma de suas trocas foi reportada! Verificar no menu 'Trocas'", trade.receiver);
                                 notification.send("Uma de suas trocas foi reportada! Verificar no menu 'Trocas'", trade.sender);
-                                Flash.create('success', 'Reportado com Sucesso!', 'large-text');
+                                swal({
+                                  title: "Reportado com sucesso!",
+                                  timer: 1700,
+                                  showConfirmButton: false });
                             }, function(error) {
                                 console.log("Error:", error);
                             });
@@ -130,7 +139,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         notification.send("Uma de suas trocas foi rejeitada! Verificar no menu 'Trocas'", trade.sender);
         tradeDB.$loaded().then(function(){
             tradeDB.$remove();
-            Flash.create('danger', 'Troca excluída!', 'large-text');
+            swal({
+              title: "Troca excluída!",
+              timer: 1700,
+              showConfirmButton: false });
         })
 
 
@@ -161,7 +173,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
         if(rastreio.length != 13)
         {
-            Flash.create('danger', 'Código inválido!', 'large-text');
+          swal({
+            title: "Código inválido!",
+            timer: 1700,
+            showConfirmButton: false });
         }
         else{
             var ref = firebase.database().ref('trades/'+trade.$id)
@@ -170,7 +185,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
                 tradeDB.receiverTrack = rastreio;
                 tradeDB.$save().then(function(ref) {
                     notification.send("Recebido código de rastreio de uma troca! Verificar no menu 'Trocas'", trade.sender);
-                    Flash.create('success', 'Código Registrado!', 'large-text');
+                    swal({
+                      title: "Código registrado!",
+                      timer: 1700,
+                      showConfirmButton: false });
                 }, function(error) {
                     console.log("Error:", error);
                 });
@@ -186,7 +204,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
         if(rastreio.length != 13)
         {
-            Flash.create('danger', 'Código inválido!', 'large-text');
+          swal({
+            title: "Código inválido!",
+            timer: 1700,
+            showConfirmButton: false });
         }
         else{
             var ref = firebase.database().ref('trades/'+trade.$id)
@@ -196,7 +217,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
                 tradeDB.$save().then(function(ref) {
                     notification.send("Recebido código de rastreio de uma troca! Verificar no menu 'Trocas'", trade.receiver);
-                    Flash.create('success', 'Código Registrado!', 'large-text');
+                    swal({
+                      title: "Código registrado!",
+                      timer: 1700,
+                      showConfirmButton: false });
                 }, function(error) {
                     console.log("Error:", error);
                 });
@@ -216,7 +240,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
             tradeDB.senderConfirm = true;
 
             tradeDB.$save().then(function(ref) {
-                Flash.create('success', 'Confirmado o recebimento!', 'large-text');
+              swal({
+                title: "Confirmado o recebimento!",
+                timer: 1700,
+                showConfirmButton: false });
                 notification.send("Um dos usuários confirmou o recebimento de seu mangá! Verificar no menu 'Trocas'", trade.receiver);
             }, function(error) {
                 console.log("Error:", error);
@@ -238,7 +265,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
             tradeDB.receiverConfirm = true;
 
             tradeDB.$save().then(function(ref) {
-                Flash.create('success', 'Confirmado o recebimento!', 'large-text');
+              swal({
+                title: "Confirmado o recebimento!",
+                timer: 1700,
+                showConfirmButton: false });
                 notification.send("Um dos usuários confirmou o recebimento de seu mangá! Verificar no menu 'Trocas'", trade.sender);
             }, function(error) {
                 console.log("Error:", error);
@@ -270,7 +300,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         comments.$loaded().then(function(){
             // add an item
             comments.$add(commentAdd).then(function(ref) {
-                Flash.create('success', 'Comentário enviado!', 'large-text');
+              swal({
+                title: "Comentário enviado!",
+                timer: 1700,
+                showConfirmButton: false });
 
             });
         });
@@ -287,7 +320,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
             // add an item
             ratings.$add(rateAdd).then(function(ref) {
                 notification.send("Você recebeu uma avaliação! Verificar no menu 'Minha Conta'", user);
-                Flash.create('success', 'Avaliação enviada!', 'large-text');
+                swal({
+                  title: "Avaliação enviada!",
+                  timer: 1700,
+                  showConfirmButton: false });
 
             });
         });
@@ -308,7 +344,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
                     tradeDB.$save().then(function(ref) {
                         notification.send("Uma de suas trocas foi concluída! Verificar no menu 'Trocas'", user);
                         notification.send("Uma de suas trocas foi concluída! Verificar no menu 'Trocas'", $rootScope.userDB.uid);
-                        Flash.create('success', 'Ambos se avaliaram. Troca finalizada!', 'large-text');
+                        swal({
+                          title: "Ambos se avaliaram. Troca finalizada!",
+                          timer: 1700,
+                          showConfirmButton: false });
                     });
                 }
             }, function(error) {

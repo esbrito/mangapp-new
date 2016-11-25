@@ -26,7 +26,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         tradesList.$loaded().then(function(){
             // add an item
             tradesList.$add(createTrade).then(function(ref) {
-                Flash.create('success', 'Interesse enviado ao usuário!', 'large-text');
+              swal({
+                title: "Interesse enviado ao usuário!",
+                timer: 1700,
+                showConfirmButton: false });
 
             });
 

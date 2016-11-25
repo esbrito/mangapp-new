@@ -17,7 +17,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
             mangaList.$loaded().then(function(){
                 // add an item
                 mangaList.$add(manga).then(function(ref) {
-                    Flash.create('success', 'Mangá Adicionado com Sucesso!', 'large-text');
+                    swal({
+                      title: "Mangá adicionado com sucesso!",
+                      timer: 1700,
+                      showConfirmButton: false });
                     //Now it needs to send notifications to all users in wishlist
                     var ref = firebase.database().ref('wishlist/');
                     var wishListLoad = $firebaseArray(ref);

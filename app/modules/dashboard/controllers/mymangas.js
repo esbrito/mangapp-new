@@ -26,7 +26,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
 
     mangaObject.$loaded().then(function(){
       mangaObject.$remove().then(function(){
-        Flash.create('danger', 'Mangá Removido!', 'large-text');
+        swal({
+          title: "Mangá removido!",
+          timer: 1700,
+          showConfirmButton: false });
       }, function(error) {
         console.log("Error:", error);
       });
