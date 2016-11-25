@@ -1,13 +1,31 @@
 <div ng-app="" ng-init="miniActive='0'">
 <div class="wrapper">
   <header class="main-header">
-    <!-- Logo -->
-    <a class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>MA</b></span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Mangapp</b></span>
-    </a>
+
+    <div class="container">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+        Menu <i class="fa fa-bars"></i>
+      </button>
+      <a class="navbar-brand page-scroll" href="#page-top">
+        <i> <img src="img/mangapp-favicon.png"  height="30" width="30"> </i> <span class="headerLogin">Mangapp</span>
+      </a>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                    <ul class="nav navbar-nav">
+                      <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                      <li class="hidden">
+                        <a href="#page-top"></a>
+                      </li>
+                      <li>
+                        <a class="headerLogin" href="sobre.html" target="_blank">Sobre</a>
+                      </li>
+                      <li>
+                        <a class="headerLogin"href="mailto:mangapp@mangapp.com">Contato</a>
+                      </li>
+                    </ul>
+              </div>
+          </div>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
@@ -113,9 +131,11 @@
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
+
     <!-- sidebar -->
     <section class="sidebar">
-      <!-- Sidebar user panel -->
+      <br><br>
+
       <div class="user-panel">
         <div class="pull-left image">
           <!--<img src="{{user.profilePhoto}}" class="img-circle" alt="User Image"> -->
@@ -128,7 +148,6 @@
 
         </div>
       </div>
-
 
       <ul class="sidebar-menu">
         <li class="treeview" ui-sref-active="active" ng-click="vm.sideBar();" data-ng-repeat="menu in vm.menuItems">
@@ -148,6 +167,7 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <br>
     <ui-view></ui-view>
   </div>
 </div>
