@@ -24,6 +24,11 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         console.log($scope.modalmanga);
     }
 
+    $scope.tradeModal = function(trade) {
+        $scope.modaltrade = trade;
+
+    }
+
     $scope.offer = function(trade,manga,mangaID) {
         var ref = firebase.database().ref('trades/'+trade.$id)
         var tradeDB = $firebaseObject(ref);
@@ -76,21 +81,46 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
     }
 
     $scope.report = function(trade,reportMessage) {
+        console.log(trade);
+        var refUserSender = firebase.database().ref('users/'+ trade.sender );
+        var sender = $firebaseObject(refUserSender);
+        sender.$loaded().then(function(){
+            var refUserReceiver = firebase.database().ref('users/'+ trade.receiver );
+            var receiver = $firebaseObject(refUserReceiver);
+            receiver.$loaded().then(function(){
+                var ref = firebase.database().ref('admin/reports')
+                var reports = $firebaseArray(ref);
+                var reportAdd = {'user': $rootScope.userDB.uid , 'message': reportMessage, 'trade': trade, 'senderCPF': sender.CPF, 'receiverCPF' : receiver.CPF, 'senderEmail' : sender.Email,  'receiverEmail' : receiver.Email, 'senderName' : sender.Username,  'receiverName' : receiver.Username }
+                console.log(reportAdd);
+                reports.$loaded().then(function(){
+                    // add an item
+                    reports.$add(reportAdd).then(function(ref) {
+                        var ref = firebase.database().ref('trades/'+trade.$id)
+                        var tradeDB = $firebaseObject(ref);
+
+                        tradeDB.$loaded().then(function(){
 
 
-        var ref = firebase.database().ref('admin/reports')
-        var reports = $firebaseArray(ref);
-        var reportAdd = {'user': $rootScope.userDB.uid , 'message': reportMessage, 'trade': trade}
-        console.log(reportAdd);
-        reports.$loaded().then(function(){
-            // add an item
-            reports.$add(reportAdd).then(function(ref) {
-                Flash.create('success', 'Reportado com Sucesso!', 'large-text');
 
+                            tradeDB.reported = true;
+                            tradeDB.reportmotive = reportMessage;
+                            tradeDB.state = "done";
+
+                            tradeDB.$save().then(function(ref) {
+                                notification.send("Uma de suas trocas foi reportada! Verificar no menu 'Trocas'", trade.receiver);
+                                notification.send("Uma de suas trocas foi reportada! Verificar no menu 'Trocas'", trade.sender);
+                                Flash.create('success', 'Reportado com Sucesso!', 'large-text');
+                            }, function(error) {
+                                console.log("Error:", error);
+                            });
+
+                        })
+
+
+                    });
+                });
             });
         });
-
-
     }
 
     $scope.reject = function(trade) {
@@ -165,7 +195,7 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
                 tradeDB.senderTrack = rastreio;
 
                 tradeDB.$save().then(function(ref) {
-                  notification.send("Recebido código de rastreio de uma troca! Verificar no menu 'Trocas'", trade.receiver);
+                    notification.send("Recebido código de rastreio de uma troca! Verificar no menu 'Trocas'", trade.receiver);
                     Flash.create('success', 'Código Registrado!', 'large-text');
                 }, function(error) {
                     console.log("Error:", error);

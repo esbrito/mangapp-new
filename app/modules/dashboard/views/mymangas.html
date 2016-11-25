@@ -20,7 +20,7 @@
                     <h3>
 
                         <img data-ng-src="{{manga.imageFile}}" height="100px"  width="auto"/>
-                        {{manga.name}} - {{manga.year}} <button type="button" data-toggle="modal" data-target="#popUp" class="fa fa-plus-circle btn btn-success btn-lg"></button> <button ng-click="remove(manga)" type="button" class="fa fa-trash btn btn-danger btn-lg"> </button>
+                        {{manga.name}} - {{manga.year}} <button type="button" data-toggle="modal" ng-click="modal(manga)"  data-target="#popUp" class="fa fa-plus-circle btn btn-success btn-lg"></button> <button ng-click="remove(manga)" type="button" class="fa fa-trash btn btn-danger btn-lg"> </button>
                     </h3>
 
                     <div id="popUp" class="modal fade" role="dialog">
@@ -33,15 +33,15 @@
                                 </div>
                                 <div class="modal-body">
                                     <h3 align="center">
-                                        Nome: {{manga.name}} <br>
+                                        Nome: {{modalmanga.name}} <br>
                                         Foto:<br>
-                                        <img src="{{manga.imageFile}}" height="300px" width="auto" /><br>
-                                        Descrição: {{manga.desc}}<br>
-                                        Coleção: {{manga.collection}}<br>
-                                        Número de Edição: {{manga.ednumb}}<br>
-                                        Editora: {{manga.publisher}}<br>
+                                        <img src="{{modalmanga.imageFile}}" height="300px" width="auto" /><br>
+                                        Descrição: {{modalmanga.desc}}<br>
+                                        Coleção: {{modalmanga.collection}}<br>
+                                        Número de Edição: {{modalmanga.ednumb}}<br>
+                                        Editora: {{modalmanga.publisher}}<br>
                                         Estado:
-                                        <div ng-switch on="manga.state">
+                                        <div ng-switch on="modalmanga.state">
                                             <p ng-switch-when="great">Usado - Ótimo (Sem avarias, lido poucas vezes)</p>
                                             <p ng-switch-when="good">Usado - Bom (Lido varias vezes, pequenas marcas de uso)</p>
                                             <p ng-switch-when="used">Usado - Regular(Folhas soltas ou faltando, marcas de maus tratos)</p>
@@ -49,7 +49,7 @@
                                             <p ng-switch-when="not opened">Lacrado</p>
                                             <p ng-switch-default>Nenhuma condição fornecida</p>
                                         </div>
-                                        Ano: {{manga.year}}<br>
+                                        Ano: {{modalmanga.year}}<br>
                                     </h3>
                                 </div>
                                 <div class="modal-footer">

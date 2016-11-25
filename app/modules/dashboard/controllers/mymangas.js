@@ -12,6 +12,10 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
     $scope.mangas = mangaList;
   });
 
+  $scope.modal = function(manga) {
+      $scope.modalmanga = manga;
+      console.log($scope.modalmanga);
+  }
 
   $scope.remove = function(manga) {
     console.log("deleting...");
