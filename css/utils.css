@@ -239,3 +239,9 @@
   opacity: 1;
   right: 0;
 }
+
+.aboutpage {
+    background-color: rgba(31, 43, 58, 0.4);
+    padding: 20px;
+    border-radius: 4px;
+}
