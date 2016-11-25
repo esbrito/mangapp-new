@@ -202,14 +202,16 @@
 /* Button of login/register in the Mangapp*/
 .button {
   display: inline-block;
-  border-radius: 4px;
+  border-radius: 30px;
   background-color: #252525;
   border: none;
   color: #white;
   text-align: center;
   font-size: 35px;
-  padding: 55px;
+  padding: 23px;
+  margin: auto;
   width: 350px;
+  height: 100px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
