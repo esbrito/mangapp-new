@@ -53,15 +53,15 @@
     <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
 
     <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyDjAxvojQESjdCa2jX6hP3PEaa6jk3MLx4",
-            authDomain: "manga-trades.firebaseapp.com",
-            databaseURL: "https://manga-trades.firebaseio.com",
-            storageBucket: "manga-trades.appspot.com",
-            messagingSenderId: "996783263888"
-        };
-        firebase.initializeApp(config);
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDjAxvojQESjdCa2jX6hP3PEaa6jk3MLx4",
+        authDomain: "manga-trades.firebaseapp.com",
+        databaseURL: "https://manga-trades.firebaseio.com",
+        storageBucket: "manga-trades.appspot.com",
+        messagingSenderId: "996783263888"
+    };
+    firebase.initializeApp(config);
     </script>
 
     <!--Common-->
@@ -96,7 +96,8 @@
     <script src="app/modules/dashboard/controllers/trades.js"></script>
 
     <div flash-message="5000"></div>
-    <ui-view></ui-view>
+    
+<ui-view></ui-view>
 
 </body>
 </html>
