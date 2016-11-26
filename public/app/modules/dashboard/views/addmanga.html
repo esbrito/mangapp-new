@@ -34,13 +34,14 @@
                         <label class="custom-file-upload">
                             <input  type="file" ngf-select ng-model="picFile" name="file"
                             accept="image/*" ngf-max-size="2MB" required
-                            ngf-model-invalid="errorFile">
+                            ngf-model-invalid="errorFile"   ngf-resize="{width: 100, height: auto, quality: .7, type: 'image/jpeg',
+              pattern='.jpg', restoreExif: false}" >
                             Clique aqui!
                         </label>
                         <i ng-show="myForm.file.$error.required"></br>*Necessário</i><br>
                         <i ng-show="myForm.file.$error.maxSize">Arquivo muito gande
                             {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-                            <img ng-show="myForm.file.$valid" > </br> <p ng-click="picFile = null" ng-show="picFile"> Imagem adicionada com sucesso! </p> <button class="RmvButtonAddManga" ng-click="picFile = null" ng-show="picFile">Remove</button>
+                            <img ng-show="myForm.file.$valid" > </br> <p ng-click="picFile = null" ng-show="picFile"> Imagem adicionada com sucesso! </p> <button class="RmvButtonAddManga" ng-click="picFile = null" ng-show="picFile">Remover</button>
 
                             <span class="progress" ng-show="picFile.progress >= 0">
                                 <div style="width:{{picFile.progress}}%"

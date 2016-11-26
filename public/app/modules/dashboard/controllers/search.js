@@ -28,6 +28,12 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         });
     }
 
+$scope.reverse = function(reverse){
+    console.log(reverse);
+    return reverse
+    
+
+}
 
     $scope.trade = function(manga, id) {
         var createTrade = ({'state': 'received', 'sender': $rootScope.userDB.uid, 'receiver': manga.userUid, 'mangaSenderIsInterested': {'id': manga.$id, 'manga': manga}, 'mangaReceiverIsInterested' : null})

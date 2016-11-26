@@ -320,12 +320,12 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         });
     }
 
-    $scope.review = function(trade, user, message) {
+    $scope.review = function(trade, user, message, grade) {
 
         console.log(message);
         var ref = firebase.database().ref('users/'+user+'/ratings')
         var ratings = $firebaseArray(ref);
-        var rateAdd = {'user': $rootScope.user.Username , 'message': message}
+        var rateAdd = {'user': $rootScope.user.Username , 'message': message, 'grade': grade}
         console.log(rateAdd);
         ratings.$loaded().then(function(){
             // add an item

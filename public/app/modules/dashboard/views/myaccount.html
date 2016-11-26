@@ -65,7 +65,7 @@
 
         <li  ng-repeat=" rating in user.ratings" >
             <h3 class="Ratings">
-                <span class="MyEvaluationsRatingUser">{{rating.user}} </span>| <span class="MyEvaluationsMessage">{{rating.message}} </br>
+            {{rating.grade}}  | <span class="MyEvaluationsRatingUser">{{rating.user}} </span>| <span class="MyEvaluationsMessage">{{rating.message}} </br>
             </h3>
         </li>
     </section>
