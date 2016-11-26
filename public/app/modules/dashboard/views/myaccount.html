@@ -66,6 +66,12 @@
         <h1 class="titleMYACC">
             Minhas avaliações
         </h1>
+
+        <li  ng-repeat=" rating in user.ratings" >
+            <h3 class="Ratings">
+                <span class="MyEvaluationsRatingUser">{{rating.user}} </span>| <span class="MyEvaluationsMessage">{{rating.message}} </br>
+            </h3>
+        </li>
     </section>
 
 </section><!-- /.content -->

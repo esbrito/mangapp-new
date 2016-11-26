@@ -348,3 +348,19 @@ input[type="file"] {
     color: black;
     font-size: 14px;
 }
+
+.Ratings {
+    font-size: 18px;
+}
+
+.MyEvaluationsRatingUser {
+    color: #1f2b3a;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.MyEvaluationsMessage {
+    color: black;
+    font-size: 18px;
+    font-weight: normal;
+}
