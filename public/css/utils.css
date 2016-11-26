@@ -312,7 +312,7 @@
 }
 
 .RmvButtonAddManga:hover {
-    background-color: #406790;
+    background-color: #3c536b;
     padding: 5px;
     border-radius: 8px;
     margin-top: 10px;
@@ -327,13 +327,13 @@
     font-size: 18px;
 }
 
-.MyEvaluationsRatingUser {
+.MyEvaluationsRatingUser, .MyEvaluationsRatingUser, .MyInfo {
     color: #1f2b3a;
     font-size: 18px;
     font-weight: bold;
 }
 
-.MyEvaluationsMessage {
+.MyEvaluationsMessage, .MyInfoP {
     color: black;
     font-size: 18px;
     font-weight: normal;
@@ -357,7 +357,7 @@ input[type="file"] {
 
 .custom-file-upload:hover {
     border: 1px;
-    background-color: #406790;
+    background-color: #3c536b;
     font-size: 15px;
     color: white;
     padding: 5px;
@@ -390,11 +390,12 @@ input[type="file"] {
     color: white;
     border-radius: 8px;
     margin: auto
+    margin: 2px 2px 2px 2px;
 }
 
 .BtnCloseSearch:hover {
     border: 1px;
-    background-color: #406790;
+    background-color: #3c536b;
     font-size: 15px;
     color: white;
     border-radius: 8px;
@@ -413,7 +414,7 @@ input[type="file"] {
 
 .DetailsMangaSearch:hover {
     border: 1px;
-    background-color: #406790;
+    background-color: #3c536b;
     transition: all 0.5s;
     margin-left: 1px;
     padding: 15px 32px;
@@ -430,7 +431,7 @@ input[type="file"] {
 
 .DetailsUserSearch:hover {
     border: 1px;
-    background-color: #406790;
+    background-color: #3c536b;
     transition: all 0.5s;
     padding: 15px 32px;
     border-radius: 8px;
@@ -447,7 +448,7 @@ input[type="file"] {
 
 .MakeTradeSearch:hover {
     border: 1px;
-    background-color: #406790;
+    background-color: #3c536b;
     margin-left: 1px;
     transition: all 0.5s;
     padding: 15px 32px;
@@ -471,7 +472,7 @@ input[type="file"] {
 
 .BtnMyMangas:hover {
     border: 1px;
-    background-color: #406790;
+    background-color: #3c536b;
     transition: all 0.5s;
     margin-left: 1px;
     padding: 15px 32px;
@@ -488,7 +489,7 @@ input[type="file"] {
 
 .BtnCloseMyMangas:hover {
     border: 1px;
-    background-color: #406790;
+    background-color: #3c536b;
     font-size: 15px;
     color: white;
     border-radius: 8px;
@@ -501,4 +502,278 @@ input[type="file"] {
     border: 1px;
     border-radius: 8px;
     box-shadow: 3px 3px 1px grey;
+}
+
+/* Trades */
+.BtnBookTrade {
+    border: 1px;
+    background-color: #1f2b3a;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    margin: auto;
+    padding: 5px;
+}
+
+.BtnBookTrade:hover {
+    border: 1px;
+    background-color: #3c536b;
+    font-size: 20px;
+    color: white;
+    border-radius: 8px;
+    margin: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.BtnUserTrade {
+    border: 1px;
+    background-color: #3c536b;
+    font-size: 20px;
+    color: white;
+    border-radius: 8px;
+    margin: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.BtnUserTrade:hover {
+    border: 1px;
+    background-color: #1f2b3a;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    margin: auto
+    cursor: pointer;
+    padding: 5px;
+}
+
+.AcceptTrade {
+    background-color: #222d32;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.AcceptTrade:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.DemonstrateInterestTrade {
+    background-color: #222d32;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.DemonstrateInterestTrade:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.SeeMangasTrade {
+    background-color: #222d32;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.SeeMangasTrade:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.SendCodeTrade {
+    background-color: #222d32;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.SendCodeTrade:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+}
+
+.Send {
+    background-color: #222d32;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.Send:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+}
+
+.Report {
+    background-color: #5f5151;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.Report:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+}
+
+.ReportBadTrade {
+    background-color: #5f5151;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.ReportBadTrade:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+}
+
+.DeclineTrade {
+    background-color: #5f5151;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.DeclineTrade:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+}
+
+.Evaluate {
+    background-color: #222d32;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.Evaluate:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+}
+
+.ConfirmedReceiving {
+    background-color: #222d32;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.ConfirmedReceiving:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+}
+
+.ChatTrade {
+    background-color: #222d32;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.ChatTrade:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+}
+
+.ShowAddress {
+    background-color: #222d32;
+    font-size: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.ShowAddress:hover {
+    background-color: #3c536b;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+}
+
+/* General Margin */
+h, button {
+    margin: 2px 2px 2px 2px;
+}
+
+button {
+    box-shadow: 1px 1px 1px grey;
+}
+
+button:hover {
+    box-shadow: 1px 1px 1px black;
+}
+
+h5.H5Trades {
+    font-size: 16px;
+    color: black;
 }
