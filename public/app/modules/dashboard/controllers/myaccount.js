@@ -18,7 +18,6 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
       var userDB = $firebaseObject(ref);
 
       userDB.$loaded().then(function(){
-        console.log("entrou");
         userDB.Username = $scope.Username;
         userDB.addr = $scope.addr;
         userDB.Email = $scope.Email;
@@ -31,4 +30,9 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
       });
     user.updateEmail($scope.Email);
   }
+
+  $('#form_id').submit(function() {
+    $('#editModal').modal('hide');
+  });
+
 }]);
