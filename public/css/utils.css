@@ -267,6 +267,13 @@
     color: #1f2b3a;
 }
 
+.EditInfoField {
+    color: black;
+    font-size: 14px;
+    font-weight: normal;
+
+}
+
 .DataEdit {
     background-color: #1f2b3a;
     padding: 10px;
@@ -315,7 +322,6 @@
     margin: auto;
     align: center;
 }
-
 
 .Ratings {
     font-size: 18px;
