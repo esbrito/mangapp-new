@@ -26,21 +26,41 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
   }
 
   $scope.remove = function(manga) {
-    console.log("deleting...");
-    var mangaID = manga.$id;
-    console.log(mangaID);
-    var ref = firebase.database().ref('mangas/'+manga.$id);
-    var mangaObject = $firebaseObject(ref);
+      console.log("deleting...");
+      var mangaID = manga.$id;
+      console.log(mangaID);
+      var ref = firebase.database().ref('mangas/'+manga.$id);
+      var mangaObject = $firebaseObject(ref);
 
-    mangaObject.$loaded().then(function(){
-      mangaObject.$remove().then(function(){
-        swal({
-          title: "Mangá removido!",
-          timer: 1700,
-          showConfirmButton: false });
-      }, function(error) {
-        console.log("Error:", error);
+      swal({
+        title: "Você tem certeza que deseja deletar esse mangá?",
+        text: "Essa ação não poderá ser revertida!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Sim, tenho certeza!",
+        cancelButtonText: "Não, cancele!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm){
+        if (isConfirm) {
+          mangaObject.$loaded().then(function(){
+            mangaObject.$remove().then(function(){
+              swal({
+                title: "Mangá removido com sucesso!",
+                timer: 1700,
+                showConfirmButton: false });
+            }, function(error) {
+              console.log("Error:", error);
+            });
+          });
+        } else {
+          swal({
+            title: "Seu mangá não foi deletado!",
+            timer: 1700,
+            showConfirmButton: false });
+        }
       });
-    });
-  }
+    }
 }]);
