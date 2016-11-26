@@ -1,7 +1,7 @@
 
 <!-- Content Header (Page header) -->
 
-<script src="js/moment-with-locales.min.js"></script>
+<script src="../../../../js/moment-with-locales.min.js"></script>
 <section class="content-header">
     <h1>
         Trocas
@@ -114,7 +114,9 @@
             <h2>Recebidos</h2>
             <ul style="list-style-type: none;">
                 <li ng-if="trade.state != 'accepted' && trade.state != 'done'" ng-repeat="(id, trade) in trades | filter:{  receiver: userDB.uid }" >
-                    <h5> Usuário tens interesse por:  {{trade.mangaSenderIsInterested.manga.name}}  <button  data-toggle="modal" data-target="#popUpMangaDescription" type="button" ng-click="modal(trade.mangaSenderIsInterested.manga)"  class="fa fa-info-circle btn btn-success btn-sm"></button>
+                    <h5> Usuário tens interesse por:  {{trade.mangaSenderIsInterested.manga.name}}
+                          <button  data-toggle="modal" data-target="#popUpMangaDescription" type="button" ng-click="modal(trade.mangaSenderIsInterested.manga)"  class="fa fa-info-circle btn btn-success btn-sm"></button>
+                           <button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(trade.mangaSenderIsInterested.manga)"  class="fa fa-user btn btn-warning btn-sm"></button>
                         <br>
                         Você está interessado por:
                         <span ng-if="trade.mangaReceiverIsInterested != undefined">
