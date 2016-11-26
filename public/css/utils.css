@@ -761,7 +761,7 @@ input[type="file"] {
 }
 
 /* Withlist */
-.RemoveDesire {
+.RemoveDesire, .BanUser {
     background-color: #5f5151;
     font-size: 15px;
     border-radius: 8px;
@@ -769,7 +769,7 @@ input[type="file"] {
     cursor: pointer;
 }
 
-.RemoveDesire:hover {
+.RemoveDesire:hover, .BanUser:hover {
     background-color: #3c536b;
     font-size: 16px;
     border-radius: 8px;
@@ -778,7 +778,7 @@ input[type="file"] {
     cursor: pointer;
 }
 
-.ADDWordKey{
+.ADDWordKey, .DisBanUser{
     background-color: #1f2b3a;
     font-size: 15px;
     border-radius: 8px;
@@ -786,7 +786,7 @@ input[type="file"] {
     cursor: pointer;
 }
 
-.ADDWordKey:hover{
+.ADDWordKey:hover, .DisBanUser:hover{
     background-color: #3c536b;
     font-size: 16px;
     border-radius: 8px;
@@ -825,7 +825,25 @@ button:hover {
     transition: all 0.5s;
 }
 
-h5.H5Trades {
+h5.H5Trades, h5.ReportedTrades, .Adm {
     font-size: 16px;
     color: black;
+}
+
+/* Admin */
+.InfoReport {
+    font-size: 16px;
+    color: black;
+    margin-left: 15px;
+}
+
+.InfoReportData, h5.AdmTitle {
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+}
+
+.InfoAboutReport {
+    font-size: 16px;
+    color: #606762;
 }
