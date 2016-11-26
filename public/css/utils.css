@@ -252,7 +252,7 @@
     background-color: rgba(31, 43, 58, 0.4);
     padding: 8px;
     border-radius: 4px;
-    font-size: 25px;
+    font-size: 18px;
     color: black;
 }
 
@@ -271,10 +271,80 @@
     padding: 10px;
     border-radius: 8px;
     margin-top: 20px;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
     display: block;
     margin: auto;
     align: center;
+}
 
+.DataEdit:hover{
+    background-color: #557fac;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 22px;
+    color: white;
+    display: block;
+    margin: auto;
+    align: center;
+    transition: all 0.5s;
+}
+
+.RmvButtonAddManga {
+    background-color: #1f2b3a;
+    padding: 5px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: white;
+    display: block;
+    margin: auto;
+    align: center;
+}
+
+.RmvButtonAddManga:hover {
+    background-color: #406790;
+    padding: 5px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: white;
+    display: block;
+    margin: auto;
+    align: center;
+}
+
+/* CSS */
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+    border: 1px;
+    background-color: #1f2b3a;
+    font-size: 15px;
+    color: white;
+    padding: 5px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin: auto
+}
+
+.custom-file-upload:hover {
+    border: 1px;
+    background-color: #406790;
+    font-size: 15px;
+    color: white;
+    padding: 5px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.BoxInput {
+    color: black;
+    font-size: 14px;
 }
