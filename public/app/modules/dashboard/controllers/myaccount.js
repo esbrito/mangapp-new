@@ -1,7 +1,7 @@
 ﻿
 
-dashboard.controller("myaccountController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash', '$firebaseArray',
-function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseArray) {
+dashboard.controller("myaccountController", ['$rootScope', '$scope', '$state', '$location', 'dashboardService', 'Flash', '$firebaseArray','$firebaseAuth','$firebaseObject',
+function ($rootScope, $scope, $state, $location, dashboardService, Flash, $firebaseArray, $firebaseAuth, $firebaseObject) {
     var vm = this;
 
     $scope.showAccountinfo = function(user){
@@ -12,14 +12,23 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
       $scope.id = user.$id;
     }
 
-    $scope.editFormSubmit = function(user){
-      var id = $scope.id;
-      console.log($scope.id);
-      var record = user;
-      record.Username = $scope.Username;
-      record.Email = $scope.Email;
-      record.addr = $scope.addr;
+    $scope.editFormSubmit = function(){
+      var user = firebase.auth().currentUser;
+      var ref = firebase.database().ref('users/'+$scope.id);
+      var userDB = $firebaseObject(ref);
 
-      $scope.user.$save(record);
-    }
+      userDB.$loaded().then(function(){
+        console.log("entrou");
+        userDB.Username = $scope.Username;
+        userDB.addr = $scope.addr;
+        userDB.Email = $scope.Email;
+        userDB.$save().then(function(ref) {
+
+        },
+        function(error) {
+          console.log("Error:", error);
+        });
+      });
+    user.updateEmail($scope.Email);
+  }
 }]);
