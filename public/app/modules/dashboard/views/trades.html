@@ -22,7 +22,7 @@
                     <h3 align="center">
                         Nome: {{modalmanga.name}} </br>
                         Foto:</br>
-                        <img src="{{modalmanga.imageFile}}" height=auto width=100% /></br>
+                        <img src="{{imageManga}}" height=auto width=100% /></br>
                         <span class="MyInfo"> Descrição:        </span> <span class="MyInfoP"> {{modalmanga.desc}}       </span></br>
                         <span class="MyInfo"> Coleção:          </span> <span class="MyInfoP"> {{modalmanga.collection}} </span></br>
                         <span class="MyInfo"> Número de Edição: </span> <span class="MyInfoP"> {{modalmanga.ednumb}}     </span></br>
@@ -144,12 +144,12 @@
                                                 <h3>
 
                                                     <img data-ng-src="{{imageManga}}" height=auto  width=100%/>
-                                                    {{manga.name}} - {{manga.year}} <button ng-init="showDetails=false"  class="fa fa-info-circle BtnBookTrade" ng-click="showDetails = !showDetails"></button>
+                                                    {{manga.name}} - {{manga.year}} <button ng-init="showDetails=false"  class="fa fa-info-circle BtnBookTrade" ng-click="showDetails = !showDetails; modal(manga)"></button>
                                                     <div ng-if="showDetails">
                                                         <h3 >
                                                             Nome: {{manga.name}} </br>
                                                             Foto:</br>
-                                                            <img src="{{manga.imageFile}}" height=auto width=100% /></br>
+                                                            <img src="{{imageManga}}" height=auto width=100% /></br>
                                                             Descrição: {{manga.desc}}</br>
                                                             Coleção: {{manga.collection}}</br>
                                                             Número de Edição: {{manga.ednumb}}</br>
