@@ -1,7 +1,7 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>
+    <h1 class="titleMYACC">
         Lista de Desejos
     </h1>
 
@@ -10,20 +10,20 @@
 <section class="content">
     <!-- Info boxes -->
 
-    Como funciona a Lista de Desejos? Adicione palavras chaves do nome dos Mangás ao qual você deseja, que este, ao ser adicionado, você será notificado.
+    <p class="Withlist">Como funciona a Lista de Desejos? Adicione palavras chaves do nome dos Mangás ao qual você deseja, que este, ao ser adicionado, você será notificado.</p>
     <div class="box-content">
         <div class="panel panel-default">
-            <h6>Adicionar Palavra Chave</h6>
-            Digite as palavras chave relacionadas com o nome do Mangá separadas por espaço: <br> <input type="text" placeholder="Palavras Chaves..." ng-model="keywordsString">
-            <button class="btn btn-danger" ng-click="addKeywords(keywordsString)" >Adicionar Palavras Chave</button>
+            <h6 class="TitleWithlist">Adicionar Palavra Chave</h6>
+            Digite as palavras chave relacionadas com o nome do Mangá separadas por espaço: </br> <input type="text" placeholder="Palavras Chaves..." ng-model="keywordsString">
+            <button class="ADDWordKey" ng-click="addKeywords(keywordsString)" >Adicionar Palavras Chave</button>
         </div>
     </div>
-    <h6>Palavras Chave Adicionadas</h6>
+    <h6 class="TitleWithlist">Palavras Chave Adicionadas</h6>
     <div class="box-content">
         <div class="panel panel-default">
             <ul style="list-style-type: none;">
                 <li ng-repeat="keyword in keywords | filter:{ user: userDB.uid }" >
-                            * {{keyword.word}} <button class="btn btn-danger btn-xs" ng-click="removeKeyword(keyword)" >Remover</button>
+                            <span class="KeyWordWithlist">* {{keyword.word}} </span> <button class="RemoveDesire" ng-click="removeKeyword(keyword)" >Remover</button>
                 </li>
             </ul>
         </div>
