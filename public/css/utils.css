@@ -248,6 +248,7 @@
     border-radius: 4px;
 }
 
+/* My Account */
 .Titlemyaccount {
     background-color: rgba(31, 43, 58, 0.4);
     padding: 8px;
@@ -315,7 +316,24 @@
     align: center;
 }
 
-/* CSS */
+
+.Ratings {
+    font-size: 18px;
+}
+
+.MyEvaluationsRatingUser {
+    color: #1f2b3a;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.MyEvaluationsMessage {
+    color: black;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+/* Add Manga */
 input[type="file"] {
   display: none;
 }
@@ -349,18 +367,89 @@ input[type="file"] {
     font-size: 14px;
 }
 
-.Ratings {
+/* Search */
+.SearchFilter {
     font-size: 18px;
+    color: black;
 }
 
-.MyEvaluationsRatingUser {
-    color: #1f2b3a;
-    font-size: 18px;
+.titleSearch {
+    font-size: 25px;
     font-weight: bold;
 }
 
-.MyEvaluationsMessage {
-    color: black;
-    font-size: 18px;
-    font-weight: normal;
+.BtnCloseSearch {
+    border: 1px;
+    background-color: #1f2b3a;
+    color: white;
+    border-radius: 8px;
+    margin: auto
+}
+
+.BtnCloseSearch:hover {
+    border: 1px;
+    background-color: #406790;
+    font-size: 15px;
+    color: white;
+    border-radius: 8px;
+    margin: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.DetailsMangaSearch {
+    border: 1px;
+    background-color: #879bb1;
+    padding: 15px 32px;
+    margin-left: 1px;
+    border-radius: 8px;
+}
+
+.DetailsMangaSearch:hover {
+    border: 1px;
+    background-color: #406790;
+    transition: all 0.5s;
+    margin-left: 1px;
+    padding: 15px 32px;
+    border-radius: 8px;
+}
+
+.DetailsUserSearch {
+    border: 1px;
+    background-color: #879bb1;
+    margin-left: 1px;
+    padding: 15px 32px;
+    border-radius: 8px;
+}
+
+.DetailsUserSearch:hover {
+    border: 1px;
+    background-color: #406790;
+    transition: all 0.5s;
+    padding: 15px 32px;
+    border-radius: 8px;
+    margin-left: 1px;
+}
+
+.MakeTradeSearch {
+    border: 1px;
+    background-color: #879bb1;
+    padding: 15px 32px;
+    border-radius: 8px;
+    margin-left: 1px;
+}
+
+.MakeTradeSearch:hover {
+    border: 1px;
+    background-color: #406790;
+    margin-left: 1px;
+    transition: all 0.5s;
+    padding: 15px 32px;
+    border-radius: 8px;
+}
+
+.ImgSearch {
+    border: 1px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 1px grey;
 }
