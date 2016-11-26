@@ -15,8 +15,16 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         });
     }
     $scope.modal = function(manga) {
-        $scope.modalmanga = manga;
-        console.log($scope.modalmanga);
+
+        var ref = firebase.database().ref('images/'+manga.imageFile);
+        var imageObj = $firebaseObject(ref);
+        imageObj.$loaded().then(function(){
+            console.log("image");
+            console.log(imageObj)
+            $scope.imageManga = imageObj.$value;
+            $scope.modalmanga = manga;
+            console.log($scope.modalmanga);
+        });
     }
     $scope.modalUserDetail = function(manga) {
 
@@ -28,12 +36,7 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
         });
     }
 
-$scope.reverse = function(reverse){
-    console.log(reverse);
-    return reverse
-    
 
-}
 
     $scope.trade = function(manga, id) {
         var createTrade = ({'state': 'received', 'sender': $rootScope.userDB.uid, 'receiver': manga.userUid, 'mangaSenderIsInterested': {'id': manga.$id, 'manga': manga}, 'mangaReceiverIsInterested' : null})

@@ -13,8 +13,16 @@ function ($rootScope, $scope, $state, $location, dashboardService, Flash, $fireb
   });
 
   $scope.modal = function(manga) {
-      $scope.modalmanga = manga;
-      console.log($scope.modalmanga);
+
+      var ref = firebase.database().ref('images/'+manga.imageFile);
+      var imageObj = $firebaseObject(ref);
+      imageObj.$loaded().then(function(){
+          console.log("image");
+          console.log(imageObj)
+          $scope.imageManga = imageObj.$value;
+          $scope.modalmanga = manga;
+          console.log($scope.modalmanga);
+      });
   }
 
   $scope.remove = function(manga) {
