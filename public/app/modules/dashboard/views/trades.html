@@ -94,7 +94,7 @@
                             <button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(trade.mangaReceiverIsInterested.manga)"  class="fa fa-user BtnUserTrade"></button>
                         </span>
                         <span ng-if="trade.mangaReceiverIsInterested == undefined">
-                            <b>Usuário ainda não demenstrou AINDA interesse em um de seus Mangás!</b>
+                            <b>Usuário ainda não demonstrou AINDA interesse em um de seus Mangás!</b>
                         </span>
                         </br>
                         <button ng-disabled="trade.mangaReceiverIsInterested == undefined" ng-click="accept(trade)"type="button" class="AcceptTrade">Aceitar Troca</button>
@@ -143,7 +143,7 @@
                                             <li ng-repeat="(id, manga) in mangas | filter:{ userUid: modaltrade.sender }" > <!-- Mangas is a list  provided by the controller-->
                                                 <h3>
 
-                                                    <img data-ng-src="{{imageManga}}" height=auto  width=100%/>
+
                                                     {{manga.name}} - {{manga.year}} <button ng-init="showDetails=false"  class="fa fa-info-circle BtnBookTrade" ng-click="showDetails = !showDetails; modal(manga)"></button>
                                                     <div ng-if="showDetails">
                                                         <h3 >
