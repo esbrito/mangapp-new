@@ -1,7 +1,7 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>
+    <h1 class="titleMYACC">
         Meus Mangás
     </h1>
 
@@ -16,8 +16,8 @@
                 <li ng-repeat=" manga in mangas | filter:{ userUid: userDB.uid }" > <!-- Mangas is a list  provided by the controller-->
                     <h3>
 
-                        <img data-ng-src="{{manga.imageFile}}" height="100px"  width="auto"/>
-                        {{manga.name}} - {{manga.year}} <button type="button" data-toggle="modal" ng-click="modal(manga)"  data-target="#popUp" class="fa fa-info-circle btn btn-success btn-lg"></button> <button ng-click="remove(manga)" type="button" class="fa fa-trash btn btn-danger btn-lg"> </button>
+                        <img class="ImgMyMangas" data-ng-src="{{manga.imageFile}}" height="100px"  width="auto"/>
+                        {{manga.name}} - {{manga.year}} <button type="button" data-toggle="modal" ng-click="modal(manga)"  data-target="#popUp" class="fa fa-info-circle BtnMyMangas"></button> <button ng-click="remove(manga)" type="button" class="fa fa-trash BtnMyMangas"> </button>
                     </h3>
 
                     <div id="popUp" class="modal fade" role="dialog">
@@ -25,18 +25,18 @@
                             <!-- Modal content-->
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <button type="button" class="BtnCloseMyMangas close" data-dismiss="modal">&times;</button>
                                     <h4 class="modal-title">Detalhes</h4>
                                 </div>
                                 <div class="modal-body">
                                     <h3 align="center">
-                                        Nome: {{modalmanga.name}} <br>
+                                        Nome: {{modalmanga.name}} </br>
                                         Foto:<br>
-                                        <img src="{{modalmanga.imageFile}}" height="300px" width="auto" /><br>
-                                        Descrição: {{modalmanga.desc}}<br>
-                                        Coleção: {{modalmanga.collection}}<br>
-                                        Número de Edição: {{modalmanga.ednumb}}<br>
-                                        Editora: {{modalmanga.publisher}}<br>
+                                        <img class="ImgMyMangas" src="{{modalmanga.imageFile}}" height="300px" width="auto" /><br>
+                                        Descrição: {{modalmanga.desc}}</br>
+                                        Coleção: {{modalmanga.collection}}</br>
+                                        Número de Edição: {{modalmanga.ednumb}}</br>
+                                        Editora: {{modalmanga.publisher}}</br>
                                         Estado:
                                         <div ng-switch on="modalmanga.state">
                                             <p ng-switch-when="great">Usado - Ótimo (Sem avarias, lido poucas vezes)</p>
@@ -50,7 +50,7 @@
                                     </h3>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                                    <button type="button" class="BtnCloseMyMangas" data-dismiss="modal">Fechar</button>
                                 </div>
                             </div>
 

@@ -459,3 +459,46 @@ input[type="file"] {
     border-radius: 8px;
     box-shadow: 3px 3px 1px grey;
 }
+
+/*My mangas*/
+.BtnMyMangas {
+    border: 1px;
+    background-color: #879bb1;
+    padding: 15px 32px;
+    margin-left: 1px;
+    border-radius: 8px;
+}
+
+.BtnMyMangas:hover {
+    border: 1px;
+    background-color: #406790;
+    transition: all 0.5s;
+    margin-left: 1px;
+    padding: 15px 32px;
+    border-radius: 8px;
+}
+
+.BtnCloseMyMangas {
+    border: 1px;
+    background-color: #1f2b3a;
+    color: white;
+    border-radius: 8px;
+    margin: auto
+}
+
+.BtnCloseMyMangas:hover {
+    border: 1px;
+    background-color: #406790;
+    font-size: 15px;
+    color: white;
+    border-radius: 8px;
+    margin: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.ImgMyMangas {
+    border: 1px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 1px grey;
+}
