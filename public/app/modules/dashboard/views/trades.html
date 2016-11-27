@@ -92,13 +92,15 @@
                             {{trade.mangaReceiverIsInterested.manga.name}}
                             <button  data-toggle="modal" data-target="#popUpMangaDescription" type="button" ng-click="modal(trade.mangaReceiverIsInterested.manga)"  class="fa fa-info-circle BtnBookTrade"></button>
                             <button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(trade.mangaReceiverIsInterested.manga)"  class="fa fa-user BtnUserTrade"></button>
+                            </br>
+                            <button ng-disabled="trade.mangaReceiverIsInterested == undefined" ng-click="accept(trade)"type="button" class="AcceptTrade">Aceitar Troca</button>
+                            <button ng-click="reject(trade)" type="button" class="DeclineTrade">Cancelar Troca</button>
                         </span>
                         <span ng-if="trade.mangaReceiverIsInterested == undefined">
-                            <b>Usuário ainda não demonstrou AINDA interesse em um de seus Mangás!</b>
+                            <b>Usuário AINDA não demonstrou interesse em um de seus Mangás!</b>
+                          </br>
+                          <button ng-click="reject(trade)" type="button" class="DeclineTrade">Cancelar Oferta</button>
                         </span>
-                        </br>
-                        <button ng-disabled="trade.mangaReceiverIsInterested == undefined" ng-click="accept(trade)"type="button" class="AcceptTrade">Aceitar Troca</button>
-                        <button ng-click="reject(trade)" type="button" class="DeclineTrade">Recusar Troca </button>
                     </h5>
                 </li>
             </ul>
@@ -114,7 +116,7 @@
             <h2>Recebidos</h2>
             <ul style="list-style-type: none;">
                 <li ng-if="trade.state != 'accepted' && trade.state != 'done'" ng-repeat="(id, trade) in trades | filter:{  receiver: userDB.uid }" >
-                    <h5 class="H5Trades"> Usuário tens interesse por:  {{trade.mangaSenderIsInterested.manga.name}}
+                    <h5 class="H5Trades"> Usuário tem interesse por:  {{trade.mangaSenderIsInterested.manga.name}}
                         <button  data-toggle="modal" data-target="#popUpMangaDescription" type="button" ng-click="modal(trade.mangaSenderIsInterested.manga)"  class="fa fa-info-circle BtnBookTrade"></button>
                         <button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(trade.mangaSenderIsInterested.manga)"  class="fa fa-user BtnUserTrade"></button>
                         </br>
@@ -123,9 +125,14 @@
                             {{trade.mangaReceiverIsInterested.manga.name}}
                             <button  data-toggle="modal" data-target="#popUpMangaDescription" type="button" ng-click="modal(trade.mangaReceiverIsInterested.manga)"  class="fa fa-info-circle BtnBookTrade"></button>
                             <button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(trade.mangaReceiverIsInterested.manga)"  class="fa fa-user BtnUserTrade"></button>
+                            </br>
+                            <h3>Aguardando o usuário aceitar a troca</h3> <button ng-click="reject(trade)" type="button" class="DeclineTrade">Cancelar Troca</button>
                         </span>
                         <span ng-if="trade.mangaReceiverIsInterested == undefined">
-                            <b>>>Ainda não demonstrou interesse por algum Mangá do usuário (use o botão abaixo)<<</b>
+                            <b>Ainda não demonstrou interesse por algum Mangá do usuário (use o botão abaixo)</b>
+                          </br>
+                          <button  ng-disabled="trade.mangaReceiverIsInterested != undefined" data-toggle="modal" ng-click="tradeModal(trade)" data-target="#popUp"type="button" class="SeeMangasTrade">Ver Mangás do Usuário!</button>
+                          <button ng-click="reject(trade)" type="button" class="DeclineTrade">Recusar Oferta</button>
                         </span>
                         </br>
 
@@ -168,7 +175,7 @@
                                                     </div>
 
 
-                                                </br> <button ng-click="offer(modaltrade,manga,id)" data-dismiss="modal" type="button" class="fa fa-thumbs-o-up DemonstrateInterestTrade">Demonstrar Interesse </button>
+                                                </br> <button ng-click="offer(modaltrade,manga,id)" data-dismiss="modal" type="button" class="fa fa-thumbs-o-up DemonstrateInterestTrade">Demonstrar Interesse</button>
                                                 </h3>
                                             </li>
                                         </ul>
@@ -180,11 +187,6 @@
 
                             </div>
                         </div>
-
-
-
-                        <button  ng-disabled="trade.mangaReceiverIsInterested != undefined" data-toggle="modal" ng-click="tradeModal(trade)" data-target="#popUp"type="button" class="SeeMangasTrade">Ver Mangás do Usuário!</button>
-                        <button ng-click="reject(trade)" type="button" class="DeclineTrade">Recusar Troca </button>
                     </h5>
                 </li>
             </ul>
