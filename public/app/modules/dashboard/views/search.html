@@ -151,7 +151,7 @@
             </li>
             <li ng-if="filter == 'year'" ng-repeat="(id, manga) in mangas | filter:{ year: searchItem ,  userUid: '!' + userDB.uid}:false | orderBy:'year':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
                 <h3>
-                
+                  
                     {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle DetailsMangaSearch"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
                 </h3>
             </li>
