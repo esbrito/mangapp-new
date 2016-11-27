@@ -202,44 +202,49 @@
 /* Button of login/register in the Mangapp*/
 .button {
   display: inline-block;
-  border-radius: 30px;
+  border-radius: 50px;
   background-color: #252525;
-  border: none;
-  color: #white;
+  border: 5px;
+  color: white;
   text-align: center;
-  font-size: 35px;
-  padding: 23px;
+  font-size: 30px;
+  padding: auto;
   margin: auto;
-  width: 350px;
-  height: 100px;
+  width: 60%;
+  height: 30%;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5px;
+
 }
 
 .button span {
   cursor: pointer;
+   border-radius: 50px;
   display: inline-block;
   position: relative;
   transition: 0.5s;
+
 }
 
 .button span:after {
   content: '»';
   position: absolute;
+   border-radius: 50px;
   opacity: 0;
   top: 0;
-  right: -20px;
+  right: -20%;
   transition: 0.5s;
 }
 
 .button:hover span {
-  padding-right: 25px;
+  padding-right: 20%;
+   border-radius: 50px;
 }
 
 .button:hover span:after {
   opacity: 1;
   right: 0;
+   border-radius: 50px;
 }
 
 .aboutpage {
@@ -851,6 +856,7 @@ p.Withlist {
 /* General Style */
 h, button {
     margin: 2px 2px 2px 2px;
+
 }
 
 button {
