@@ -214,6 +214,7 @@
   height: 30%;
   transition: all 0.5s;
   cursor: pointer;
+  webkit-justify-content: center;
 
 }
 

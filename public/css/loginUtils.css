@@ -24,3 +24,19 @@ div.enter {
     padding: 15px;
     border-radius: 4px;
 }
+
+/* General Style */
+h, button {
+    margin: 2px 2px 2px 2px;
+
+}
+
+button {
+    box-shadow: 1px 1px 1px grey;
+    transition: all 0.5s;
+}
+
+button:hover {
+    box-shadow: 1px 1px 1px black;
+    transition: all 0.5s;
+}
