@@ -1,4 +1,3 @@
-
 <section class="content-header">
     <h1 class="titleSearch">
         Pesquisar Mangá
@@ -61,12 +60,12 @@
                 <h3 align="center">
                     Nome: {{modalmanga.name}} <br>
                     Foto:<br>
-                    <img class="ImgSearch" src="{{imageManga}}" height="300px" width="auto" /><br>
-                    Descrição: {{modalmanga.desc}}<br>
-                    Coleção: {{modalmanga.collection}}<br>
-                    Número de Edição: {{modalmanga.ednumb}}<br>
-                    Editora: {{modalmanga.publisher}}<br>
-                    Estado:
+                    <img class="ImgSearch" src="{{imageManga}}" height=auto width=100% /><br>
+                    <span class="MyInfo"> Descrição:        </span> <span class="MyInfoP"> {{modalmanga.desc}}       </span></br>
+                    <span class="MyInfo"> Coleção:          </span> <span class="MyInfoP"> {{modalmanga.collection}} </span></br>
+                    <span class="MyInfo"> Número de Edição: </span> <span class="MyInfoP"> {{modalmanga.ednumb}}     </span></br>
+                    <span class="MyInfo"> Editora:          </span> <span class="MyInfoP" >{{modalmanga.publisher}}   </span></br>
+                    <span class="MyInfo"> Estado:           </span>
                     <div ng-switch on="modalmanga.state">
                         <p ng-switch-when="great">Usado - Ótimo (Sem avarias, lido poucas vezes)</p>
                         <p ng-switch-when="good">Usado - Bom (Lido varias vezes, pequenas marcas de uso)</p>
@@ -86,9 +85,6 @@
     </div>
 </div>
 
-
-
-
 <div id="popUpUser" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -104,62 +100,59 @@
                     <li  ng-repeat=" rating in modaluser.ratings" >
                         <h3>
                             {{rating.grade}}  | <span class="MyEvaluationsRatingUser">{{rating.user}} </span>| <span class="MyEvaluationsMessage">{{rating.message}} </br>
-                        </h3>
-                    </li>
-                </h3>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="BtnCloseSearch" data-dismiss="modal">Fechar</button>
+                            </h3>
+                        </li>
+                    </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="BtnCloseSearch" data-dismiss="modal">Fechar</button>
+                </div>
             </div>
         </div>
-
     </div>
-</div>
 
-<div class="box-content">
-    <div class="panel panel-default">
-        <ul style="list-style-type: none;">
-            <li ng-if="filter == 'name'" ng-repeat="manga in mangas  | filter:{ name: searchItem ,  userUid: '!' + userDB.uid}:false  | orderBy:'name':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
-                <h3>
+    <div class="box-content">
+        <div class="panel panel-default">
+            <ul style="list-style-type: none;">
+                <li ng-if="filter == 'name'" ng-repeat="manga in mangas  | filter:{ name: searchItem ,  userUid: '!' + userDB.uid}:false  | orderBy:'name':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
+                    <h3>
 
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)"  class=" fa fa-info-circle DetailsMangaSearch"><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"></button><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
-                </h3>
-            </li>
-            <li ng-if="filter == 'ednumb'" ng-repeat="(id, manga) in mangas | filter:{ ednumb: searchItem ,  userUid: '!' + userDB.uid}:false | orderBy:'ednumb':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
-                <h3>
+                        {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)"  class=" fa fa-info-circle DetailsMangaSearch"><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"></button><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
+                    </h3>
+                </li>
+                <li ng-if="filter == 'ednumb'" ng-repeat="(id, manga) in mangas | filter:{ ednumb: searchItem ,  userUid: '!' + userDB.uid}:false | orderBy:'ednumb':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
+                    <h3>
 
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp"  type="button" ng-click="modal(manga)"  class="fa fa-info-circle DetailsMangaSearch"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
-                </h3>
-            </li>
-            <li ng-if="filter == 'collection'" ng-repeat="(id, manga) in mangas | filter:{ collection: searchItem ,  userUid: '!' + userDB.uid}:false  | orderBy:'collection':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
-                <h3>
+                        {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp"  type="button" ng-click="modal(manga)"  class="fa fa-info-circle DetailsMangaSearch"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
+                    </h3>
+                </li>
+                <li ng-if="filter == 'collection'" ng-repeat="(id, manga) in mangas | filter:{ collection: searchItem ,  userUid: '!' + userDB.uid}:false  | orderBy:'collection':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
+                    <h3>
 
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle DetailsMangaSearch"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
-                </h3>
-            </li>
-            <li ng-if="filter == 'publisher'" ng-repeat="(id, manga) in mangas | filter:{ publisher: searchItem ,  userUid: '!' + userDB.uid}:false  | orderBy:'publisher':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
-                <h3>
+                        {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle DetailsMangaSearch"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
+                    </h3>
+                </li>
+                <li ng-if="filter == 'publisher'" ng-repeat="(id, manga) in mangas | filter:{ publisher: searchItem ,  userUid: '!' + userDB.uid}:false  | orderBy:'publisher':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
+                    <h3>
 
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle DetailsMangaSearch"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
-                </h3>
-            </li>
-            <li ng-if="filter == 'state'" ng-repeat="(id, manga) in mangas | filter:{ state: searchItem ,  userUid: '!' + userDB.uid}:false | orderBy:'state':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
-                <h3>
+                        {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle DetailsMangaSearch"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
+                    </h3>
+                </li>
+                <li ng-if="filter == 'state'" ng-repeat="(id, manga) in mangas | filter:{ state: searchItem ,  userUid: '!' + userDB.uid}:false | orderBy:'state':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
+                    <h3>
 
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle DetailsMangaSearch"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
-                </h3>
-            </li>
-            <li ng-if="filter == 'year'" ng-repeat="(id, manga) in mangas | filter:{ year: searchItem ,  userUid: '!' + userDB.uid}:false | orderBy:'year':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
-                <h3>
-                  
-                    {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle DetailsMangaSearch"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
-                </h3>
-            </li>
+                        {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle DetailsMangaSearch"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
+                    </h3>
+                </li>
+                <li ng-if="filter == 'year'" ng-repeat="(id, manga) in mangas | filter:{ year: searchItem ,  userUid: '!' + userDB.uid}:false | orderBy:'year':(reverseOrder == 'true')" > <!-- Mangas is a list  provided by the controller-->
+                    <h3>
 
-
-        </ul>
+                        {{manga.name}} - {{manga.year}} <button  data-toggle="modal" data-target="#popUp" type="button" ng-click="modal(manga)" class="fa fa-info-circle DetailsMangaSearch"></button><button  data-toggle="modal" data-target="#popUpUser" type="button" ng-click="modalUserDetail(manga)"  class="fa fa-user DetailsUserSearch"><button ng-click="trade(manga, id)"type="button" class="fa fa-exchange MakeTradeSearch"></button>
+                    </h3>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
 
 
 
