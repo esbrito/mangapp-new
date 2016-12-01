@@ -4,7 +4,7 @@
 <div ng-app="" ng-init="miniActive='0'">
 <div class="wrapper">
   <header class="main-header">
-      <a class="navbar-brand page-scroll" style="border-color: transparent" href="../../../../index.html">
+      <a class="navbar-brand page-scroll hidden-xs hidden-sm"  style="border-color: transparent" href="../../../../index.html">
           <i> <img src="img/mangapp-favicon.png"  height="30" width="30"> </i> <span style="color: white; ;   ">Mangapp</span>
       </a>
 
@@ -81,7 +81,7 @@
           </li>
 
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
+          <li class="dropdown user user-menu hidden-xs hidden-sm" >
             <a class="dropdown-toggle" data-toggle="dropdown">
               <!--<img src="{{user.profilePhoto}}" class="user-image" alt="User Image" />-->
               <span class="class="MenuUP" hidden-xs">{{user.Username}}</span>
@@ -91,7 +91,7 @@
               <li class="user-header">
                 <!--<img src="{{user.profilePhoto}}" class="img-circle" alt="User Image">-->
 
-                <h3 class="nameApp">{{user.Username}}</h3>
+                <h3 class="nameApp ">{{user.Username}}</h3>
 
               </li>
               <!-- Menu Footer-->
@@ -107,6 +107,14 @@
               </li>
             </ul>
           </li>
+
+
+          <span ng-show="vm.currentUser != undefined"  class="hidden-md	hidden-lg">
+            <a href="#"  class="DisLogApp" ng-click="vm.auth.$signOut()">Deslogar</a>
+          </span>
+
+
+
         </ul>
       </div>
     </nav>
